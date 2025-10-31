@@ -77,8 +77,7 @@ class SearchContentController: UIViewController {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
-            make.bottom.lessThanOrEqualTo(view.safeAreaLayoutGuide.snp.bottom)
-            make.bottom.equalTo(view.keyboardLayoutGuide.snp.bottom)
+            make.bottom.equalTo(view.keyboardLayoutGuide.snp.top)
         }
         tableView.delegate = self
         tableView.dataSource = self

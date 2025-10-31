@@ -84,6 +84,12 @@ extension MainController {
         guard let identifier = conv else { return }
 
         chatView.use(conversation: identifier)
+        if !isSidebarCollapsed, // 已经展开的状态下
+           !allowSidebarPersistence // sidebar 和 chatview 水火不容
+        {
+            // 关上
+            view.doWithAnimation { self.isSidebarCollapsed = true }
+        }
 
         let session = ConversationSessionManager.shared.session(for: identifier)
         session.updateModels()

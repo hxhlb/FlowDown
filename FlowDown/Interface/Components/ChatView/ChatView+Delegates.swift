@@ -240,7 +240,6 @@ extension ChatView: RichEditorView.Delegate {
             UIAction(
                 title: String(localized: "Enabled"),
                 image: UIImage(systemName: "hammer"),
-                attributes: [.keepsMenuPresented],
                 state: isEnabled ? .on : .off
             ) { _ in
                 requestReload(!isEnabled)
