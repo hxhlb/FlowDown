@@ -85,7 +85,9 @@ class ConversationListView: UIView {
                     animated: false,
                     scrollPosition: visible ? .none : .middle
                 )
-            } else {
+            } else if dataSource.numberOfSections(in: tableView) > 0,
+                      dataSource.tableView(tableView, numberOfRowsInSection: 0) > 0
+            {
                 let indexPath = IndexPath(row: 0, section: 0)
                 let visible = tableView.indexPathsForVisibleRows?.contains(indexPath) ?? false
                 tableView.selectRow(
