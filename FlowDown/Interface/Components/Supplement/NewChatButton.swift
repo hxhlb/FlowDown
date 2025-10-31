@@ -112,6 +112,7 @@ class NewChatButton: UIButton {
         let templateMenu = UIMenu(
             title: String(localized: "Choose Template"),
             image: UIImage(systemName: "folder"),
+            options: [.displayInline],
             children: actions
         )
 
