@@ -9577,6 +9577,22 @@
         }
       }
     },
+    "Select from Existing" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select from Existing"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择现有"
+          }
+        }
+      }
+    },
     "Select from Server" : {
       "localizations" : {
         "en" : {
@@ -11102,23 +11118,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "此模型似乎过大，可能无法在此设备上加载。"
-          }
-        }
-      }
-    },
-    "This model is provided by pollinations.ai free of charge. Rate limit applies." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This model is provided by pollinations.ai free of charge. Rate limit applies."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "此模型由 pollinations.ai 免费提供。包含速率限制。"
           }
         }
       }
