@@ -22,6 +22,15 @@ struct FlowDownAppShortcuts: AppShortcutsProvider {
                 shortTitle: LocalizedStringResource("Set Model", defaultValue: "Set Model"),
                 systemImageName: "slider.horizontal.3"
             ),
+            AppShortcut(
+                intent: GenerateNewConversationLinkIntent(),
+                phrases: [
+                    "Create FlowDown link on \(.applicationName)",
+                    "New conversation link on \(.applicationName)",
+                ],
+                shortTitle: LocalizedStringResource("Conversation Link", defaultValue: "Conversation Link"),
+                systemImageName: "link"
+            ),
         ]
 
         if #available(iOS 18.0, macCatalyst 18.0, *) {
