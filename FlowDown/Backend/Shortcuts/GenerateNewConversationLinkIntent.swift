@@ -38,4 +38,3 @@ struct GenerateNewConversationLinkIntent: AppIntent {
         return .result(value: link, dialog: dialog)
     }
 }
-
