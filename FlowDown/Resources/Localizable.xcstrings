@@ -23,6 +23,22 @@
         }
       }
     },
+    "(Reasoning) %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(Reasoning) %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(Reasoning) %@"
+          }
+        }
+      }
+    },
     "**Welcome to FlowDown🐦**, a blazing fast and smooth client app for LLMs with respect of your privacy.\n\nFree models included. You can also _configure cloud models_ or _run local models_ on device.\n\n💡 For more information, check out [our wiki](https://apps.qaq.wiki/docs/flowdown/).\n\n---\n**What to do next?**\n\n1. Select or _add a new model_, and **create a new conversation**.\n2. Later, you can go to **Settings** to customize your experience.\n3. For any issues, feel free to [contact us](https://discord.gg/UHKMRyJcgc).\n\n✨ **Enjoy your FlowDown experience!**" : {
       "localizations" : {
         "en" : {
@@ -1072,16 +1088,84 @@
       }
     },
     "Ask Model" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask Model"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask Model"
+          }
+        }
+      }
     },
     "Ask Model + Image" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask Model + Image"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask Model + Image"
+          }
+        }
+      }
     },
     "Ask Model + Image + Tools" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask Model + Image + Tools"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask Model + Image + Tools"
+          }
+        }
+      }
     },
     "Ask Model + Tools" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask Model + Tools"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask Model + Tools"
+          }
+        }
+      }
+    },
+    "Assistant" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assistant"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assistant"
+          }
+        }
+      }
     },
     "Audio" : {
       "localizations" : {
@@ -1272,6 +1356,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正在浏览 %@"
+          }
+        }
+      }
+    },
+    "Built-in Tool" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Built-in Tool"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Built-in Tool"
           }
         }
       }
@@ -1741,7 +1841,20 @@
       }
     },
     "Cloud" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cloud"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cloud"
+          }
+        }
+      }
     },
     "Cloud Model" : {
       "localizations" : {
@@ -2160,6 +2273,22 @@
         }
       }
     },
+    "Content" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Content"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Content"
+          }
+        }
+      }
+    },
     "Content truncated due to excessive length." : {
       "localizations" : {
         "en" : {
@@ -2493,6 +2622,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "通过复制当前配置创建一个新模型。"
+          }
+        }
+      }
+    },
+    "Create conversation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create conversation"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create conversation"
+          }
+        }
+      }
+    },
+    "Create Conversation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create Conversation"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create Conversation"
           }
         }
       }
@@ -3265,6 +3426,38 @@
         }
       }
     },
+    "Disable all FlowDown tools" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable all FlowDown tools"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable all FlowDown tools"
+          }
+        }
+      }
+    },
+    "Disable All Tools" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable All Tools"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable All Tools"
+          }
+        }
+      }
+    },
     "Disable iCloud Sync" : {
       "localizations" : {
         "en" : {
@@ -3293,6 +3486,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "禁用"
+          }
+        }
+      }
+    },
+    "Disabled built-in tools: %lld. Skipped: %lld. MCP servers disabled: %lld of %lld." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disabled built-in tools: %1$lld. Skipped: %2$lld. MCP servers disabled: %3$lld of %4$lld."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disabled built-in tools: %1$lld. Skipped: %2$lld. MCP servers disabled: %3$lld of %4$lld."
           }
         }
       }
@@ -3988,6 +4197,86 @@
         }
       }
     },
+    "Enable ${tool}" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable ${tool}"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable ${tool}"
+          }
+        }
+      }
+    },
+    "Enable a specific FlowDown tool or MCP server." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable a specific FlowDown tool or MCP server."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable a specific FlowDown tool or MCP server."
+          }
+        }
+      }
+    },
+    "Enable all FlowDown tools" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable all FlowDown tools"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable all FlowDown tools"
+          }
+        }
+      }
+    },
+    "Enable All Tools" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable All Tools"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable All Tools"
+          }
+        }
+      }
+    },
+    "Enable every built-in tool and all MCP servers." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable every built-in tool and all MCP servers."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable every built-in tool and all MCP servers."
+          }
+        }
+      }
+    },
     "Enable iCloud Sync" : {
       "localizations" : {
         "en" : {
@@ -4053,6 +4342,22 @@
         }
       }
     },
+    "Enable Tool" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable Tool"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable Tool"
+          }
+        }
+      }
+    },
     "Enabled" : {
       "localizations" : {
         "en" : {
@@ -4065,6 +4370,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "启用"
+          }
+        }
+      }
+    },
+    "Enabled built-in tools: %lld. Skipped: %lld. MCP servers enabled: %lld of %lld." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enabled built-in tools: %1$lld. Skipped: %2$lld. MCP servers enabled: %3$lld of %4$lld."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enabled built-in tools: %1$lld. Skipped: %2$lld. MCP servers enabled: %3$lld of %4$lld."
+          }
+        }
+      }
+    },
+    "Enabled MCP server: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enabled MCP server: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enabled MCP server: %@"
+          }
+        }
+      }
+    },
+    "Enabled tool: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enabled tool: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enabled tool: %@"
           }
         }
       }
@@ -4951,6 +5304,22 @@
         }
       }
     },
+    "Failed to launch FlowDown." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to launch FlowDown."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to launch FlowDown."
+          }
+        }
+      }
+    },
     "Failed to load model: %@" : {
       "localizations" : {
         "en" : {
@@ -5111,6 +5480,38 @@
         }
       }
     },
+    "Fetch Last Conversation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fetch Last Conversation"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fetch Last Conversation"
+          }
+        }
+      }
+    },
+    "Fetch latest conversation details" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fetch latest conversation details"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fetch latest conversation details"
+          }
+        }
+      }
+    },
     "Fetch Updates Now" : {
       "localizations" : {
         "en" : {
@@ -5257,6 +5658,38 @@
         }
       }
     },
+    "FlowDown launched to start a new conversation." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FlowDown launched to start a new conversation."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FlowDown launched to start a new conversation."
+          }
+        }
+      }
+    },
+    "FlowDown launched with your message." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FlowDown launched with your message."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FlowDown launched with your message."
+          }
+        }
+      }
+    },
     "FlowDown will restart to apply the imported database." : {
       "localizations" : {
         "en" : {
@@ -5269,91 +5702,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "FlowDown 将重新启动以应用导入的数据库。"
-          }
-        }
-      }
-    },
-    "FlowDownModelEntityType" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Model"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "模型"
-          }
-        }
-      }
-    },
-    "FlowDownModelSourceApple" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple Intelligence"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apple Intelligence"
-          }
-        }
-      }
-    },
-    "FlowDownModelSourceCloud" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cloud"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "云端"
-          }
-        }
-      }
-    },
-    "FlowDownModelSourceLocal" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Local"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "本地"
-          }
-        }
-      }
-    },
-    "FlowDownQuickReplyShortcutTitle" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ask FlowDown"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "询问 FlowDown"
           }
         }
       }
@@ -5878,7 +6226,20 @@
       }
     },
     "Image" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image"
+          }
+        }
+      }
     },
     "Imagination" : {
       "localizations" : {
@@ -6136,6 +6497,54 @@
         }
       }
     },
+    "Improve Writing - Concise" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Improve Writing - Concise"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Improve Writing - Concise"
+          }
+        }
+      }
+    },
+    "Improve Writing - Friendly" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Improve Writing - Friendly"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Improve Writing - Friendly"
+          }
+        }
+      }
+    },
+    "Improve Writing - Professional" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Improve Writing - Professional"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Improve Writing - Professional"
+          }
+        }
+      }
+    },
     "Inference" : {
       "localizations" : {
         "en" : {
@@ -6261,6 +6670,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "继承"
+          }
+        }
+      }
+    },
+    "Initial Message" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Initial Message"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Initial Message"
           }
         }
       }
@@ -6699,7 +7124,20 @@
       }
     },
     "Local" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local"
+          }
+        }
+      }
     },
     "Local Area Network" : {
       "localizations" : {
@@ -7609,23 +8047,6 @@
         }
       }
     },
-    "Model replied: %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Model replied: %@"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "模型已回复：%@"
-          }
-        }
-      }
-    },
     "Model Selector" : {
       "localizations" : {
         "en" : {
@@ -7947,6 +8368,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无对话模板"
+          }
+        }
+      }
+    },
+    "No conversations were found." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No conversations were found."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No conversations were found."
           }
         }
       }
@@ -8288,6 +8725,22 @@
         }
       }
     },
+    "Open FlowDown and optionally start a conversation with a message." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open FlowDown and optionally start a conversation with a message."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open FlowDown and optionally start a conversation with a message."
+          }
+        }
+      }
+    },
     "Open in Default Browser" : {
       "localizations" : {
         "en" : {
@@ -8460,6 +8913,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "原始消息"
+          }
+        }
+      }
+    },
+    "Original Text:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Original Text:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Original Text:"
           }
         }
       }
@@ -9109,16 +9578,68 @@
       }
     },
     "Quick Reply with Image" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Reply with Image"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Reply with Image"
+          }
+        }
+      }
     },
     "Quick Reply with Image & Tools" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Reply with Image & Tools"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Reply with Image & Tools"
+          }
+        }
+      }
     },
     "Quick Reply with Image and Tools" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Reply with Image and Tools"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Reply with Image and Tools"
+          }
+        }
+      }
     },
     "Quick Reply with Tools" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Reply with Tools"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Reply with Tools"
+          }
+        }
+      }
     },
     "Raw Content" : {
       "localizations" : {
@@ -9555,6 +10076,22 @@
         }
       }
     },
+    "Return the full transcript of the most recent FlowDown conversation." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Return the full transcript of the most recent FlowDown conversation."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Return the full transcript of the most recent FlowDown conversation."
+          }
+        }
+      }
+    },
     "Rewrite" : {
       "localizations" : {
         "en" : {
@@ -9567,6 +10104,134 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "改写"
+          }
+        }
+      }
+    },
+    "Rewrite concise ${text}" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewrite concise ${text}"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewrite concise ${text}"
+          }
+        }
+      }
+    },
+    "Rewrite friendly ${text}" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewrite friendly ${text}"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewrite friendly ${text}"
+          }
+        }
+      }
+    },
+    "Rewrite professionally ${text}" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewrite professionally ${text}"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewrite professionally ${text}"
+          }
+        }
+      }
+    },
+    "Rewrite text in a more professional tone while preserving meaning." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewrite text in a more professional tone while preserving meaning."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewrite text in a more professional tone while preserving meaning."
+          }
+        }
+      }
+    },
+    "Rewrite text with a warmer and more approachable tone." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewrite text with a warmer and more approachable tone."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewrite text with a warmer and more approachable tone."
+          }
+        }
+      }
+    },
+    "Rewrite the following content so it reads professional, confident, and concise while preserving the original meaning. Reply with the revised text only." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewrite the following content so it reads professional, confident, and concise while preserving the original meaning. Reply with the revised text only."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewrite the following content so it reads professional, confident, and concise while preserving the original meaning. Reply with the revised text only."
+          }
+        }
+      }
+    },
+    "Rewrite the following content to be more concise and direct while keeping essential details. Reply with the revised text only." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewrite the following content to be more concise and direct while keeping essential details. Reply with the revised text only."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewrite the following content to be more concise and direct while keeping essential details. Reply with the revised text only."
+          }
+        }
+      }
+    },
+    "Rewrite the following content to sound warm, friendly, and easy to understand while keeping the same intent. Reply with the revised text only." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewrite the following content to sound warm, friendly, and easy to understand while keeping the same intent. Reply with the revised text only."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rewrite the following content to sound warm, friendly, and easy to understand while keeping the same intent. Reply with the revised text only."
           }
         }
       }
@@ -9812,7 +10477,20 @@
       }
     },
     "Select an image to include." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select an image to include."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select an image to include."
+          }
+        }
+      }
     },
     "Select as Default" : {
       "localizations" : {
@@ -9879,13 +10557,52 @@
       }
     },
     "Send a message with an image and get the model's response." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send a message with an image and get the model's response."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send a message with an image and get the model's response."
+          }
+        }
+      }
     },
     "Send a message with an image, allow tools, and get the response." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send a message with an image, allow tools, and get the response."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send a message with an image, allow tools, and get the response."
+          }
+        }
+      }
     },
     "Send a message, allow model tools, and get the response." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send a message, allow model tools, and get the response."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send a message, allow model tools, and get the response."
+          }
+        }
+      }
     },
     "Send us an email." : {
       "localizations" : {
@@ -10274,6 +10991,22 @@
         }
       }
     },
+    "Source Text:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Text:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source Text:"
+          }
+        }
+      }
+    },
     "Speech Recognition" : {
       "localizations" : {
         "en" : {
@@ -10478,6 +11211,134 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "总结"
+          }
+        }
+      }
+    },
+    "Summarize ${text}" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize ${text}"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize ${text}"
+          }
+        }
+      }
+    },
+    "Summarize as list ${text}" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize as list ${text}"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize as list ${text}"
+          }
+        }
+      }
+    },
+    "Summarize content into a list of key points." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize content into a list of key points."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize content into a list of key points."
+          }
+        }
+      }
+    },
+    "Summarize content into a short paragraph." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize content into a short paragraph."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize content into a short paragraph."
+          }
+        }
+      }
+    },
+    "Summarize Text" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize Text"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize Text"
+          }
+        }
+      }
+    },
+    "Summarize Text as List" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize Text as List"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize Text as List"
+          }
+        }
+      }
+    },
+    "Summarize the following content into a concise paragraph that captures the main ideas. Reply with the summary only." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize the following content into a concise paragraph that captures the main ideas. Reply with the summary only."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize the following content into a concise paragraph that captures the main ideas. Reply with the summary only."
+          }
+        }
+      }
+    },
+    "Summarize the following content into a list of short bullet points that highlight the essential facts. Reply with the bullet list only." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize the following content into a list of short bullet points that highlight the essential facts. Reply with the bullet list only."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Summarize the following content into a list of short bullet points that highlight the essential facts. Reply with the bullet list only."
           }
         }
       }
@@ -10984,6 +11845,22 @@
         }
       }
     },
+    "The latest conversation does not contain any messages." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The latest conversation does not contain any messages."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The latest conversation does not contain any messages."
+          }
+        }
+      }
+    },
     "The maximum number of search results to fetch." : {
       "localizations" : {
         "en" : {
@@ -11129,7 +12006,20 @@
       }
     },
     "The provided image could not be processed." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The provided image could not be processed."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The provided image could not be processed."
+          }
+        }
+      }
     },
     "The request to fetch updates has been sent. Depending on the amount of data, it may take some time to complete." : {
       "localizations" : {
@@ -11147,11 +12037,69 @@
         }
       }
     },
+    "The selected MCP server could not be located." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected MCP server could not be located."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected MCP server could not be located."
+          }
+        }
+      }
+    },
     "The selected model does not support image inputs." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected model does not support image inputs."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected model does not support image inputs."
+          }
+        }
+      }
     },
     "The selected model does not support tool calls." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected model does not support tool calls."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected model does not support tool calls."
+          }
+        }
+      }
+    },
+    "The selected tool could not be located." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected tool could not be located."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected tool could not be located."
+          }
+        }
+      }
     },
     "The server is currently disabled." : {
       "localizations" : {
@@ -11490,7 +12438,20 @@
       }
     },
     "This shortcut does not accept images." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This shortcut does not accept images."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This shortcut does not accept images."
+          }
+        }
+      }
     },
     "This value will be added to the request as additional header." : {
       "localizations" : {
@@ -11974,6 +12935,38 @@
         }
       }
     },
+    "Trim text to be more concise without losing the key message." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trim text to be more concise without losing the key message."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trim text to be more concise without losing the key message."
+          }
+        }
+      }
+    },
+    "Turn off every built-in tool and all MCP servers." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn off every built-in tool and all MCP servers."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn off every built-in tool and all MCP servers."
+          }
+        }
+      }
+    },
     "Turning off sync only pauses future updates. Existing data stays in place. Re‑enable later to fetch and resume syncing." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -12003,6 +12996,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法连接到所选 MCP 服务器，请检查你的网络和配置。"
+          }
+        }
+      }
+    },
+    "Unable to construct FlowDown URL." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to construct FlowDown URL."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to construct FlowDown URL."
           }
         }
       }
@@ -12083,6 +13092,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法确认"
+          }
+        }
+      }
+    },
+    "Unable to encode the provided message." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to encode the provided message."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to encode the provided message."
           }
         }
       }
@@ -12707,6 +13732,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用工具"
+          }
+        }
+      }
+    },
+    "User" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User"
           }
         }
       }
@@ -13511,6 +14552,54 @@
         }
       }
     },
+    "What message should FlowDown use to start the chat?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What message should FlowDown use to start the chat?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What message should FlowDown use to start the chat?"
+          }
+        }
+      }
+    },
+    "What text should be rewritten?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What text should be rewritten?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What text should be rewritten?"
+          }
+        }
+      }
+    },
+    "What text should be summarized?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What text should be summarized?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What text should be summarized?"
+          }
+        }
+      }
+    },
     "When enabled, large content pasted into the editor will be attached as a file. You can tap on the file to edit it." : {
       "localizations" : {
         "en" : {
@@ -13572,6 +14661,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "应该由哪个模型来回答？"
+          }
+        }
+      }
+    },
+    "Which model should rewrite the text?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Which model should rewrite the text?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Which model should rewrite the text?"
+          }
+        }
+      }
+    },
+    "Which model should summarize the text?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Which model should summarize the text?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Which model should summarize the text?"
+          }
+        }
+      }
+    },
+    "Which tool should be enabled?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Which tool should be enabled?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Which tool should be enabled?"
           }
         }
       }

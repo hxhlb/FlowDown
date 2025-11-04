@@ -23,10 +23,21 @@ def update_translations(file_path):
         sys.exit(1)
     
     strings = data['strings']
-    
+
+    # Determine all languages present in the file (excluding ones marked shouldTranslate=false)
+    languages: set[str] = set()
+    for value in strings.values():
+        locs = value.get('localizations', {})
+        for lang in locs.keys():
+            languages.add(lang)
+
+    # Ensure English is always part of the language set
+    languages.add('en')
+
     # Count changes
     added_count = 0
     fixed_count = 0
+    filled_count = 0
     
     # Iterate through all strings
     for key, value in strings.items():
@@ -34,31 +45,54 @@ def update_translations(file_path):
         if not value.get('shouldTranslate', True):
             continue
         
-        # Get existing localizations
-        locs = value.get('localizations', {})
-        
+        # Ensure dictionary exists for modifications
+        if 'localizations' not in value:
+            value['localizations'] = {}
+
+        locs = value['localizations']
+
         # Check if 'en' localization is missing
         if 'en' not in locs:
-            # Add English localization with the key as the value
-            if 'localizations' not in value:
-                value['localizations'] = {}
-            
-            value['localizations']['en'] = {
+            locs['en'] = {
                 'stringUnit': {
                     'state': 'translated',
                     'value': key
                 }
             }
             added_count += 1
-        else:
-            # Check if the state is 'new' and fix it
-            en_loc = locs['en']
-            if en_loc.get('stringUnit', {}).get('state') == 'new':
-                # Set state to 'translated' and use the key as value if empty
-                if not en_loc.get('stringUnit', {}).get('value', '').strip():
-                    en_loc['stringUnit']['value'] = key
-                en_loc['stringUnit']['state'] = 'translated'
-                fixed_count += 1
+
+        # Ensure English localization is properly marked
+        en_loc = locs['en']
+        en_string_unit = en_loc.setdefault('stringUnit', {})
+        if en_string_unit.get('state') == 'new':
+            if not en_string_unit.get('value', '').strip():
+                en_string_unit['value'] = key
+            en_string_unit['state'] = 'translated'
+            fixed_count += 1
+        english_value = en_string_unit.get('value', key)
+
+        # Fill missing localizations for other languages using English as fallback
+        for language in languages:
+            if language == 'en':
+                continue
+
+            string_unit = locs.get(language, {}).get('stringUnit')
+            current_value = string_unit.get('value').strip() if string_unit and string_unit.get('value') else ''
+            current_state = string_unit.get('state') if string_unit else None
+
+            if language not in locs or not current_value:
+                locs[language] = {
+                    'stringUnit': {
+                        'state': 'translated',
+                        'value': english_value
+                    }
+                }
+                filled_count += 1
+            elif current_state == 'new':
+                locs[language]['stringUnit']['state'] = 'translated'
+                if not current_value:
+                    locs[language]['stringUnit']['value'] = english_value
+                filled_count += 1
     
     # Write the updated file
     try:
@@ -67,6 +101,7 @@ def update_translations(file_path):
         print(f"✅ Successfully updated {file_path}")
         print(f"   - Added {added_count} missing English localizations")
         print(f"   - Fixed {fixed_count} 'new' state translations")
+        print(f"   - Filled {filled_count} fallback localizations")
         return True
     except Exception as e:
         print(f"❌ Error writing file: {e}")
