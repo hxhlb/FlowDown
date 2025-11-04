@@ -92,7 +92,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "We use your camera to take picture. Your photo may be uploaded by your choice."
+            "value" : "We use your camera to take pictures. Your photo may be uploaded based on your choice."
           }
         },
         "zh-Hans" : {
@@ -133,7 +133,7 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "我们需要本地网络访问权限来连接到你所请求的服务提供商。"
           }
         }
@@ -187,7 +187,7 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "我们需要音频输入权限来进行听写。我们不会收集你的数据，但可能会被系统上传处理。"
           }
         }
@@ -223,7 +223,7 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "我们需要音频输入权限来进行听写。我们不会收集你的数据，但可能会被系统上传处理。"
           }
         }

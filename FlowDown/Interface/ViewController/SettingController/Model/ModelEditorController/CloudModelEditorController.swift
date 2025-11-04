@@ -265,7 +265,7 @@ class CloudModelEditorController: StackScrollController {
 
         stackView.addArrangedSubviewWithMargin(
             ConfigurableSectionFooterView()
-                .with(footer: "Extra headers and body fields are optional, and can be used to add extra information to the request. They should be in JSON format with key-value pairs.")
+                .with(footer: "Extra headers and body fields can be used to fine-tune model behavior and performance, such as enabling reasoning or setting reasoning budgets. The specific parameters vary across different service providers—please refer to their official documentation.")
         ) { $0.top /= 2 }
         stackView.addArrangedSubview(SeparatorView())
 

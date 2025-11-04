@@ -79,7 +79,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%d servers imported successfully, %d failed."
+            "value" : "%1$d servers imported successfully, %2$d failed."
           }
         },
         "zh-Hans" : {
@@ -95,7 +95,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%d templates imported successfully, %d failed."
+            "value" : "%1$d templates imported successfully, %2$d failed."
           }
         },
         "zh-Hans" : {
@@ -136,7 +136,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$lld 个模版已成功导入，%2$lld失败。"
+            "value" : "%1$lld 个模版已成功导入，%2$lld 失败。"
           }
         }
       }
@@ -521,7 +521,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "￼所有记忆数据都本地存储在您的设备上。导出操作可让您备份记忆数据。"
+            "value" : "所有记忆数据都本地存储在您的设备上。导出操作可让您备份记忆数据。"
           }
         }
       }
@@ -553,7 +553,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "￼允许 AI 删除不再需要的特定记忆。"
+            "value" : "允许 AI 删除不再需要的特定记忆。"
           }
         }
       }
@@ -569,7 +569,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "￼允许 AI 列出带 ID 的记忆，以进行管理操作。"
+            "value" : "允许 AI 列出带 ID 的记忆，以进行管理操作。"
           }
         }
       }
@@ -585,7 +585,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "￼允许 AI 检索已存储的记忆，以提供上下文。"
+            "value" : "允许 AI 检索已存储的记忆，以提供上下文。"
           }
         }
       }
@@ -601,7 +601,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "￼允许 AI 存储重要信息，以用于未来的对话。"
+            "value" : "允许 AI 存储重要信息，以用于未来的对话。"
           }
         }
       }
@@ -617,7 +617,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "￼允许 AI 更新现有的记忆内容。"
+            "value" : "允许 AI 更新现有的记忆内容。"
           }
         }
       }
@@ -713,7 +713,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "压缩对话遇到错五：%@"
+            "value" : "压缩对话遇到错误：%@"
           }
         }
       }
@@ -745,7 +745,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "分析对话并生成可复用的聊天模板。提取核心目的，创建一个简洁的名称，建议一个合适的表情符号，并撰写一个系统提示，以捕捉对话模式的精髓。\n"
+            "value" : "分析对话并生成可复用的聊天模板。提取核心目的，创建一个简洁的名称，建议一个合适的表情符号，并撰写一个系统提示，以捕捉对话模式的精髓。"
           }
         }
       }
@@ -1002,7 +1002,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "￼您确定要删除所有已存储的记忆吗？此操作无法撤销。"
+            "value" : "您确定要删除所有已存储的记忆吗？此操作无法撤销。"
           }
         }
       }
@@ -1323,7 +1323,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "￼浏览、搜索和管理已存储的记忆。"
+            "value" : "浏览、搜索和管理已存储的记忆。"
           }
         }
       }
@@ -5031,18 +5031,12 @@
         }
       }
     },
-    "Extra headers and body fields are optional, and can be used to add extra information to the request. They should be in JSON format with key-value pairs." : {
+    "Extra headers and body fields can be used to fine-tune model behavior and performance, such as enabling reasoning or setting reasoning budgets. The specific parameters vary across different service providers—please refer to their official documentation." : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Extra headers and body fields are optional, and can be used to add extra information to the request. They should be in JSON format with key-value pairs."
-          }
-        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "额外的请求头和请求体字段是可选的，可用于向请求中添加额外信息。这些字段应采用包含键值对的JSON格式。"
+            "value" : "额外的报头和请求体可以用来精细控制模型的行为和表现，例如是否启用推理或推理消耗的预算。对于不同的服务提供商来说，这里具体的参数各有差异，请参考他们的原始文档来填写。"
           }
         }
       }
@@ -5123,7 +5117,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "删除iCloud数据失败，可稍后重试"
+            "value" : "删除 iCloud 数据失败，可稍后重试"
           }
         }
       }
@@ -7408,7 +7402,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "￼管理 AI 记忆工具和已存储的对话记忆。"
+            "value" : "管理 AI 记忆工具和已存储的对话记忆。"
           }
         }
       }
@@ -11520,7 +11514,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "系统正在提供关于当前查询的最新信息：\n\n你的名字： %1$@\n当前日期： %2$@\n用户区域： %3$@\n\n请使用最新信息，并确保符合先前提供的指南。\n"
+            "value" : "系统正在提供关于当前查询的最新信息：\n\n你的名字： %1$@\n当前日期： %2$@\n用户区域： %3$@\n\n请使用最新信息，并确保符合先前提供的指南。"
           }
         }
       }
@@ -12128,7 +12122,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "系统提供多种工具以便您使用，请根据用户查询内容明智调用，避免请求已提供或易推断的信息。\n"
+            "value" : "系统提供多种工具以便您使用，请根据用户查询内容明智调用，避免请求已提供或易推断的信息。"
           }
         }
       }
@@ -12240,7 +12234,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "￼这些工具允许 AI 存储、回忆和管理对话中的重要信息，以提供更佳的上下文感知能力。"
+            "value" : "这些工具允许 AI 存储、回忆和管理对话中的重要信息，以提供更佳的上下文感知能力。"
           }
         }
       }
@@ -14269,7 +14263,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "We requires LAN access for interact with local service providers. We do not collect any information from your LAN."
+            "value" : "We require LAN access to interact with local service providers. We do not collect any information from your LAN."
           }
         },
         "zh-Hans" : {
@@ -14317,7 +14311,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "We use your audio data for speech recognition. Your data is processed by system, we do not collect those infomation."
+            "value" : "We use your audio data for speech recognition. Your data is processed by the system; we do not collect this information."
           }
         },
         "zh-Hans" : {
@@ -14333,7 +14327,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "We use your camera to take picture. Your photo may be uploaded by your choice."
+            "value" : "We use your camera to take pictures. Your photo may be uploaded based on your choice."
           }
         },
         "zh-Hans" : {
