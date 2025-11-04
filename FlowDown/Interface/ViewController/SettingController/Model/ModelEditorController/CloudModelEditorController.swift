@@ -592,7 +592,7 @@ class CloudModelEditorController: StackScrollController {
 
     private func buildEndpointMenu(for modelId: CloudModel.ID, view: ConfigurableInfoView) -> [UIMenuElement] {
         guard let model = ModelManager.shared.cloudModel(identifier: modelId) else { return [] }
-        
+
         let editAction = UIAction(
             title: String(localized: "Edit"),
             image: UIImage(systemName: "character.cursor.ibeam")
@@ -613,7 +613,7 @@ class CloudModelEditorController: StackScrollController {
         }
 
         var menuElements: [UIMenuElement] = [editAction]
-        
+
         // Add copy action if there's a value
         if !model.endpoint.isEmpty {
             let copyAction = UIAction(
@@ -639,7 +639,7 @@ class CloudModelEditorController: StackScrollController {
                     view.configure(value: endpoint)
                 }
             }
-            
+
             menuElements.append(UIMenu(
                 title: String(localized: "Select from Existing"),
                 image: UIImage(systemName: "list.bullet"),
@@ -653,7 +653,7 @@ class CloudModelEditorController: StackScrollController {
 
     private func buildModelIdentifierMenu(for modelId: CloudModel.ID, view: ConfigurableInfoView) -> [UIMenuElement] {
         guard let model = ModelManager.shared.cloudModel(identifier: modelId) else { return [] }
-        
+
         let editAction = UIAction(
             title: String(localized: "Edit"),
             image: UIImage(systemName: "character.cursor.ibeam")
@@ -678,7 +678,7 @@ class CloudModelEditorController: StackScrollController {
         }
 
         var menuElements: [UIMenuElement] = [editAction]
-        
+
         // Add copy action if there's a value
         if !model.model_identifier.isEmpty {
             let copyAction = UIAction(
