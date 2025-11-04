@@ -13,7 +13,6 @@ import Storage
 enum InferenceIntentHandler {
     struct Options {
         let allowsImages: Bool
-        let allowsTools: Bool
     }
 
     static func execute(
@@ -66,20 +65,10 @@ enum InferenceIntentHandler {
             throw FlowDownShortcutError.emptyMessage
         }
 
-        var toolDefinitions: [ChatRequestBody.Tool]? = nil
-        if options.allowsTools {
-            guard capabilities.contains(.tool) else { throw FlowDownShortcutError.toolsNotSupportedByModel }
-            let tools = await ModelToolsManager.shared.getEnabledToolsIncludeMCP()
-            let definitions = tools.map(\.definition)
-            if !definitions.isEmpty {
-                toolDefinitions = definitions
-            }
-        }
-
         let inference = try await ModelManager.shared.infer(
             with: modelIdentifier,
             input: requestMessages,
-            tools: toolDefinitions
+            tools: nil
         )
 
         var response = inference.content.trimmingCharacters(in: .whitespacesAndNewlines)

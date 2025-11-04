@@ -164,7 +164,6 @@ enum FlowDownShortcutError: LocalizedError {
     case imageNotAllowed
     case imageNotSupportedByModel
     case invalidImage
-    case toolsNotSupportedByModel
 
     var errorDescription: String? {
         switch self {
@@ -180,8 +179,6 @@ enum FlowDownShortcutError: LocalizedError {
             String(localized: "The selected model does not support image inputs.")
         case .invalidImage:
             String(localized: "The provided image could not be processed.")
-        case .toolsNotSupportedByModel:
-            String(localized: "The selected model does not support tool calls.")
         }
     }
 }

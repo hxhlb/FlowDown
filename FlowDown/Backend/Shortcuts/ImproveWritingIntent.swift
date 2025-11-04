@@ -163,7 +163,7 @@ enum ImproveWritingIntentHelper {
             model: model,
             message: message,
             image: nil,
-            options: .init(allowsImages: false, allowsTools: false)
+            options: .init(allowsImages: false)
         )
     }
 }
