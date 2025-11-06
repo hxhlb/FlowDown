@@ -30,10 +30,16 @@ enum InferenceIntentHandler {
 
         let modelIdentifier = try await resolveModelIdentifier(model: model)
         let prompt = await preparePrompt()
+        let proactiveMemoryContext = await MemoryStore.shared.formattedProactiveMemoryContext()
 
         var requestMessages: [ChatRequestBody.Message] = []
         if !prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             requestMessages.append(.system(content: .text(prompt)))
+        }
+        if let proactiveMemoryContext,
+           !proactiveMemoryContext.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        {
+            requestMessages.append(.system(content: .text(proactiveMemoryContext)))
         }
 
         let capabilities = await MainActor.run {

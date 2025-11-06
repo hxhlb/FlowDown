@@ -16,6 +16,8 @@ extension ConversationSession {
         _ modelWillExecuteTools: Bool,
         _ object: RichEditorView.Object
     ) async {
+        var proactiveMemoryProvided = false
+
         if ModelManager.shared.includeDynamicSystemInfo {
             let runtimeContent = String(localized:
                 """
@@ -29,6 +31,11 @@ extension ConversationSession {
                 """
             )
             requestMessages.append(.system(content: .text(runtimeContent)))
+        }
+
+        if let proactiveMemoryContext = await MemoryStore.shared.formattedProactiveMemoryContext() {
+            requestMessages.append(.system(content: .text(proactiveMemoryContext)))
+            proactiveMemoryProvided = true
         }
 
         if case .bool(true) = object.options[.browsing] {
@@ -86,6 +93,11 @@ extension ConversationSession {
 
                     Be proactive about memory management to provide personalized, contextually aware assistance. Always format stored information clearly and in third person perspective.
                     """
+            }
+
+            if proactiveMemoryProvided {
+                toolGuidance += "\n\n" +
+                    String(localized: "A proactive memory summary has been provided above according to the user's setting. Treat it as reliable context and keep it updated through memory tools when necessary.")
             }
 
             requestMessages.append(

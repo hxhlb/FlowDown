@@ -8,6 +8,41 @@ import json
 import sys
 import os
 
+NEW_STRINGS: dict[str, dict[str, str]] = {
+    "Proactive Memory": {"zh-Hans": "主动提供记忆"},
+    "When enabled, FlowDown will include stored memories in system prompts and Shortcuts inference even if memory tools are disabled.": {
+        "zh-Hans": "开启后，即使未启用记忆工具，FlowDown 也会在系统提示词与快捷指令推理中提供已存储的记忆。"
+    },
+    "Proactive Memory Context": {"zh-Hans": "主动提供的记忆摘要"},
+    "Choose how FlowDown proactively shares stored memories with the model during conversations and Shortcuts automations.": {
+        "zh-Hans": "选择 FlowDown 在对话与快捷指令自动化中向模型主动提供记忆的方式。"
+    },
+    "Off": {"zh-Hans": "关闭"},
+    "Past Day": {"zh-Hans": "1 天内"},
+    "Past Week": {"zh-Hans": "1 周内"},
+    "Past Month": {"zh-Hans": "1 个月内"},
+    "Past Year": {"zh-Hans": "1 年内"},
+    "Latest 15 Items": {"zh-Hans": "最近 15 项"},
+    "Latest 30 Items": {"zh-Hans": "最近 30 项"},
+    "All Memories": {"zh-Hans": "所有"},
+    "Proactive memory sharing is disabled.": {"zh-Hans": "已关闭主动提供记忆。"},
+    "Memories saved within the past 24 hours.": {"zh-Hans": "包含过去 24 小时内保存的记忆。"},
+    "Memories saved within the past 7 days.": {"zh-Hans": "包含过去 7 天内保存的记忆。"},
+    "Memories saved within the past 30 days.": {"zh-Hans": "包含过去 30 天内保存的记忆。"},
+    "Memories saved within the past year.": {"zh-Hans": "包含过去一年内保存的记忆。"},
+    "The most recent 15 memories.": {"zh-Hans": "包含最近的 15 条记忆。"},
+    "The most recent 30 memories.": {"zh-Hans": "包含最近的 30 条记忆。"},
+    "All stored memories.": {"zh-Hans": "包含所有已存储的记忆。"},
+    "Scope: %@": {"zh-Hans": "范围：%@"},
+    "%d. [%@] %@": {"zh-Hans": "%d. [%@] %@"},
+    "This summary is provided automatically according to the user's proactive memory setting, even when memory tools are disabled.": {
+        "zh-Hans": "该摘要根据用户的主动记忆设置自动提供，即使记忆工具未启用也会附带。"
+    },
+    "A proactive memory summary has been provided above according to the user's setting. Treat it as reliable context and keep it updated through memory tools when necessary.": {
+        "zh-Hans": "根据用户的设置，上方已提供主动记忆摘要。请将其视为可靠的上下文，并在需要时通过记忆工具保持更新。"
+    },
+}
+
 def update_translations(file_path):
     """Update missing translations in the xcstrings file."""
     
@@ -23,6 +58,28 @@ def update_translations(file_path):
         sys.exit(1)
     
     strings = data['strings']
+
+    # Ensure new strings exist with provided translations
+    for key, translations in NEW_STRINGS.items():
+        entry = strings.setdefault(key, {})
+        if entry.get('shouldTranslate') is False:
+            entry.pop('shouldTranslate', None)
+
+        locs = entry.setdefault('localizations', {})
+        locs.setdefault('en', {
+            'stringUnit': {
+                'state': 'translated',
+                'value': key,
+            }
+        })
+
+        for language, value in translations.items():
+            locs[language] = {
+                'stringUnit': {
+                    'state': 'translated',
+                    'value': value,
+                }
+            }
 
     # Determine all languages present in the file (excluding ones marked shouldTranslate=false)
     languages: set[str] = set()
