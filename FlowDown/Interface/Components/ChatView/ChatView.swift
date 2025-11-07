@@ -256,7 +256,7 @@ extension ChatView {
             $0.textColor = .label
             $0.textAlignment = .center
             $0.translatesAutoresizingMaskIntoConstraints = false
-            $0.clipsToBounds = true
+            $0.clipsToBounds = false
         }
 
         let icon = UIImageView().with {
@@ -360,8 +360,10 @@ extension ChatView {
         func use(identifier: Conversation.ID?) {
             conv = identifier
             let conversation = ConversationManager.shared.conversation(identifier: identifier)
-            textLabel.text = conversation?.title ?? String(localized: "Untitled")
             icon.image = conversation?.interfaceImage
+            doWithAnimation {
+                self.textLabel.text = conversation?.title ?? String(localized: "Untitled")
+            }
         }
 
         func contextMenuInteraction(
