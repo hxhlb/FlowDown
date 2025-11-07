@@ -15,6 +15,11 @@ class MemoryListController: UIViewController {
     private let searchController = UISearchController(searchResultsController: nil)
     private var memories: [Memory] = []
     private var filteredMemories: [Memory] = []
+    private lazy var addMemoryButton = UIBarButtonItem(
+        barButtonSystemItem: .add,
+        target: self,
+        action: #selector(addMemoryButtonTapped)
+    )
 
     private var isSearching: Bool {
         let text = searchController.searchBar.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
@@ -46,6 +51,7 @@ class MemoryListController: UIViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.preferredSearchBarPlacement = .stacked
+        navigationItem.rightBarButtonItem = addMemoryButton
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -133,6 +139,31 @@ class MemoryListController: UIViewController {
                         }
                     }
                     self.present(errorAlert, animated: true)
+                }
+            }
+        }
+    }
+
+    @objc
+    private func addMemoryButtonTapped() {
+        Task { [weak self] in
+            guard let self else { return }
+            do {
+                let placeholder = String(localized: "Untitled")
+                let createdMemory = try await MemoryStore.shared.storeAsync(content: placeholder)
+                let refreshedMemories = try await MemoryStore.shared.getAllMemoriesAsync()
+                await MainActor.run {
+                    self.memories = refreshedMemories
+                    if self.isSearching {
+                        self.searchController.isActive = false
+                    }
+                    self.filteredMemories = refreshedMemories
+                    self.tableView.reloadData()
+                    self.presentEditor(for: createdMemory)
+                }
+            } catch {
+                await MainActor.run {
+                    self.presentMemoryCreationError(error)
                 }
             }
         }
@@ -368,5 +399,17 @@ private extension MemoryListController {
         let displayed = currentMemories()
         guard let row = displayed.firstIndex(where: { $0.id == memory.id }) else { return nil }
         return IndexPath(row: row, section: 0)
+    }
+
+    func presentMemoryCreationError(_ error: Error) {
+        let alert = AlertViewController(
+            title: String(localized: "Error"),
+            message: error.localizedDescription
+        ) { context in
+            context.addAction(title: String(localized: "OK"), attribute: .accent) {
+                context.dispose()
+            }
+        }
+        present(alert, animated: true)
     }
 }
