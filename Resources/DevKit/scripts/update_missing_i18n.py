@@ -55,6 +55,17 @@ NEW_STRINGS: dict[str, dict[str, str]] = {
     "Candidates": {"zh-Hans": "候选项"},
     "What content should be classified?": {"zh-Hans": "需要分类的内容是什么？"},
     "Provide the candidate labels.": {"zh-Hans": "请提供候选标签。"},
+    "Classify Content with Image": {"zh-Hans": "分类内容（含图像）"},
+    "Use the model to classify content with the help of an accompanying image. If the model cannot decide, the first candidate is returned.": {
+        "zh-Hans": "使用模型结合附带的图像对内容进行分类。如果模型无法决定，则返回第一个候选项。"
+    },
+    "Add any additional details for the classification.": {"zh-Hans": "请补充任何额外的分类细节。"},
+    "Select an image to accompany the request.": {"zh-Hans": "请选择要随请求附上的图像。"},
+    "An image is provided with this request. Consider the visual details when selecting the candidate.": {
+        "zh-Hans": "此请求附带图像。选择候选项时请参考视觉细节。"
+    },
+    "Classify + Image": {"zh-Hans": "分类 + 图像"},
+    "Classify ${image}": {"zh-Hans": "分类 ${image}"},
     "You are a classification assistant. Choose the best candidate for the provided content.": {
         "zh-Hans": "你是一名分类助手。请为提供的内容选择最合适的候选项。"
     },

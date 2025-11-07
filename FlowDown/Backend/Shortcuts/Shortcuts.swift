@@ -1,6 +1,6 @@
 import AppIntents
 
-struct FlowDownAppShortcuts: AppShortcutsProvider {
+struct Shortcuts: AppShortcutsProvider {
     static var shortcutTileColor: ShortcutTileColor { .lime }
 
     static var appShortcuts: [AppShortcut] {
@@ -66,6 +66,18 @@ struct FlowDownAppShortcuts: AppShortcutsProvider {
                     ],
                     shortTitle: LocalizedStringResource("Ask Model + Image"),
                     systemImageName: "photo"
+                )
+            )
+
+            shortcuts.append(
+                AppShortcut(
+                    intent: ClassifyContentWithImageIntent(),
+                    phrases: [
+                        "Classify image on \(.applicationName)",
+                        "Classify content with image on \(.applicationName)",
+                    ],
+                    shortTitle: LocalizedStringResource("Classify + Image"),
+                    systemImageName: "photo.badge.checkmark"
                 )
             )
         }

@@ -88,7 +88,7 @@ enum SummarizeIntentHelper {
         directive: String
     ) async throws -> String {
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { throw FlowDownShortcutError.emptyMessage }
+        guard !trimmed.isEmpty else { throw ShortcutError.emptyMessage }
 
         let message = [
             directive,

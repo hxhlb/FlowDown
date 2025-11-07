@@ -1,5 +1,5 @@
 //
-//  FlowDownShortcutError.swift
+//  ShortcutError.swift
 //  FlowDown
 //
 //  Created by qaq on 7/11/2025.
@@ -8,7 +8,7 @@
 import AppIntents
 import Foundation
 
-enum FlowDownShortcutError: LocalizedError {
+enum ShortcutError: LocalizedError {
     case emptyMessage
     case modelUnavailable
     case emptyResponse

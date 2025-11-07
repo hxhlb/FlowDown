@@ -40,11 +40,14 @@ enum InferenceIntentHandler {
         let hasImage = image != nil
 
         if trimmedMessage.isEmpty, !(options.allowsImages && hasImage) {
-            throw FlowDownShortcutError.emptyMessage
+            throw ShortcutError.emptyMessage
         }
 
         let modelIdentifier = try await resolveModelIdentifier(model: model)
-        let prompt = await preparePrompt()
+        let modelCapabilities = await MainActor.run {
+            ModelManager.shared.modelCapabilities(identifier: modelIdentifier)
+        }
+        let prompt = preparePrompt()
 
         var requestMessages: [ChatRequestBody.Message] = []
         if !prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
@@ -52,6 +55,7 @@ enum InferenceIntentHandler {
         }
 
         var proactiveMemoryProvided = false
+        var memoryWritingTools: [ModelTool] = []
         if options.enableMemory {
             if let memoryContext = await MemoryStore.shared.formattedProactiveMemoryContext(),
                !memoryContext.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
@@ -59,17 +63,18 @@ enum InferenceIntentHandler {
                 proactiveMemoryProvided = true
                 requestMessages.append(.system(content: .text(memoryContext)))
             }
-        }
-
-        let capabilities = await MainActor.run {
-            ModelManager.shared.modelCapabilities(identifier: modelIdentifier)
+            if modelCapabilities.contains(.tool) {
+                let guidance = memoryToolGuidance(proactiveMemoryProvided: proactiveMemoryProvided)
+                requestMessages.append(.system(content: .text(guidance)))
+                memoryWritingTools = allWritingMemoryTools()
+            }
         }
 
         var attachmentsForConversation: [RichEditorView.Object.Attachment] = []
         var contentParts: [ChatRequestBody.Message.ContentPart] = []
         if let image {
-            guard options.allowsImages else { throw FlowDownShortcutError.imageNotAllowed }
-            guard capabilities.contains(.visual) else { throw FlowDownShortcutError.imageNotSupportedByModel }
+            guard options.allowsImages else { throw ShortcutError.imageNotAllowed }
+            guard modelCapabilities.contains(.visual) else { throw ShortcutError.imageNotSupportedByModel }
             let resources = try prepareImageResources(from: image)
             contentParts.append(resources.contentPart)
             attachmentsForConversation.append(resources.attachment)
@@ -86,21 +91,12 @@ enum InferenceIntentHandler {
         } else if !contentParts.isEmpty {
             userMessage = .user(content: .parts(contentParts))
         } else {
-            throw FlowDownShortcutError.emptyMessage
-        }
-
-        var memoryTools: [ModelTool] = []
-        if options.enableMemory, capabilities.contains(.tool) {
-            memoryTools = await enabledMemoryTools()
-            if !memoryTools.isEmpty {
-                let guidance = memoryToolGuidance(proactiveMemoryProvided: proactiveMemoryProvided)
-                requestMessages.append(.system(content: .text(guidance)))
-            }
+            throw ShortcutError.emptyMessage
         }
 
         requestMessages.append(userMessage)
 
-        let toolDefinitions = memoryTools.isEmpty ? nil : memoryTools.map(\.definition)
+        let toolDefinitions = memoryWritingTools.isEmpty ? nil : memoryWritingTools.map(\.definition)
         let inference = try await ModelManager.shared.infer(
             with: modelIdentifier,
             input: requestMessages,
@@ -111,14 +107,14 @@ enum InferenceIntentHandler {
         let trimmedReasoning = inference.reasoningContent.trimmingCharacters(in: .whitespacesAndNewlines)
         let response = trimmedContent.isEmpty ? trimmedReasoning : trimmedContent
 
-        guard !response.isEmpty else { throw FlowDownShortcutError.emptyResponse }
+        guard !response.isEmpty else { throw ShortcutError.emptyResponse }
 
         if options.enableMemory,
-           capabilities.contains(.tool),
-           !memoryTools.isEmpty,
+           modelCapabilities.contains(.tool),
+           !memoryWritingTools.isEmpty,
            !inference.toolCallRequests.isEmpty
         {
-            await executeMemoryToolCalls(inference.toolCallRequests, using: memoryTools)
+            await executeMemoryWritingToolCalls(inference.toolCallRequests, using: memoryWritingTools)
         }
 
         if options.saveToConversation {
@@ -134,49 +130,45 @@ enum InferenceIntentHandler {
         return response
     }
 
-    static func resolveModelIdentifier(model: ShortcutsEntities.ModelEntity?) async throws -> ModelManager.ModelIdentifier {
+    static func resolveModelIdentifier(model: ShortcutsEntities.ModelEntity?) throws -> ModelManager.ModelIdentifier {
         if let model {
             return model.id
         }
 
-        return try await MainActor.run {
-            let manager = ModelManager.shared
+        let manager = ModelManager.shared
 
-            let defaultConversationModel = ModelManager.ModelIdentifier.defaultModelForConversation
-            if !defaultConversationModel.isEmpty {
-                return defaultConversationModel
-            }
-
-            if let firstCloud = manager.cloudModels.value.first(where: { !$0.id.isEmpty })?.id {
-                return firstCloud
-            }
-
-            if let firstLocal = manager.localModels.value.first(where: { !$0.id.isEmpty })?.id {
-                return firstLocal
-            }
-
-            if #available(iOS 26.0, macCatalyst 26.0, *), AppleIntelligenceModel.shared.isAvailable {
-                return AppleIntelligenceModel.shared.modelIdentifier
-            }
-
-            throw FlowDownShortcutError.modelUnavailable
+        let defaultConversationModel = ModelManager.ModelIdentifier.defaultModelForConversation
+        if !defaultConversationModel.isEmpty {
+            return defaultConversationModel
         }
+
+        if let firstCloud = manager.cloudModels.value.first(where: { !$0.id.isEmpty })?.id {
+            return firstCloud
+        }
+
+        if let firstLocal = manager.localModels.value.first(where: { !$0.id.isEmpty })?.id {
+            return firstLocal
+        }
+
+        if #available(iOS 26.0, macCatalyst 26.0, *), AppleIntelligenceModel.shared.isAvailable {
+            return AppleIntelligenceModel.shared.modelIdentifier
+        }
+
+        throw ShortcutError.modelUnavailable
     }
 
-    static func preparePrompt() async -> String {
-        await MainActor.run {
-            let manager = ModelManager.shared
-            var prompt = manager.defaultPrompt.createPrompt()
-            let additional = manager.additionalPrompt.trimmingCharacters(in: .whitespacesAndNewlines)
-            if !additional.isEmpty {
-                if prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                    prompt = additional
-                } else {
-                    prompt += "\n" + additional
-                }
+    static func preparePrompt() -> String {
+        let manager = ModelManager.shared
+        var prompt = manager.defaultPrompt.createPrompt()
+        let additional = manager.additionalPrompt.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !additional.isEmpty {
+            if prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                prompt = additional
+            } else {
+                prompt += "\n" + additional
             }
-            return prompt
         }
+        return prompt
     }
 
     private static func prepareImageResources(from file: IntentFile) throws -> PreparedImageResources {
@@ -186,17 +178,17 @@ enum InferenceIntentHandler {
         }
 
         guard !data.isEmpty, let image = UIImage(data: data) else {
-            throw FlowDownShortcutError.invalidImage
+            throw ShortcutError.invalidImage
         }
 
         let processedForRequest = resize(image: image, maxDimension: 1024)
         guard let pngData = processedForRequest.pngData() else {
-            throw FlowDownShortcutError.invalidImage
+            throw ShortcutError.invalidImage
         }
 
         let base64 = pngData.base64EncodedString()
         guard let url = URL(string: "data:image/png;base64,\(base64)") else {
-            throw FlowDownShortcutError.invalidImage
+            throw ShortcutError.invalidImage
         }
 
         let previewImage = resize(image: image, maxDimension: 320)
@@ -297,32 +289,28 @@ enum InferenceIntentHandler {
         return guidance
     }
 
-    private static func enabledMemoryTools() async -> [ModelTool] {
-        await MainActor.run {
-            ModelToolsManager.shared.tools.filter { tool in
-                guard tool.isEnabled else { return false }
-                return switch tool {
-                case is MTStoreMemoryTool, is MTRecallMemoryTool,
-                     is MTListMemoriesTool, is MTUpdateMemoryTool,
-                     is MTDeleteMemoryTool:
-                    true
-                default:
-                    false
-                }
+    private static func allWritingMemoryTools() -> [ModelTool] {
+        ModelToolsManager.shared.tools.filter { tool in
+            guard tool.isEnabled else { return false }
+            return switch tool {
+            case is MTStoreMemoryTool,
+                 is MTUpdateMemoryTool,
+                 is MTDeleteMemoryTool:
+                true
+            default:
+                false
             }
         }
     }
 
-    private static func executeMemoryToolCalls(_ toolCalls: [ToolCallRequest], using tools: [ModelTool]) async {
+    private static func executeMemoryWritingToolCalls(_ toolCalls: [ToolCallRequest], using tools: [ModelTool]) async {
         guard !toolCalls.isEmpty else { return }
         let mapping = Dictionary(uniqueKeysWithValues: tools.map { ($0.functionName.lowercased(), $0) })
 
         for call in toolCalls {
             guard let tool = mapping[call.name.lowercased()] else { continue }
             do {
-                _ = try await Task { @MainActor in
-                    try await tool.execute(with: call.args, anchorTo: UIView())
-                }.value
+                _ = try await tool.execute(with: call.args, anchorTo: UIView())
             } catch {
                 Logger.model.errorFile("Memory tool \(tool.functionName) failed: \(error.localizedDescription)")
             }

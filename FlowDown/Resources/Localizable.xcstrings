@@ -7,6 +7,23 @@
     "..." : {
       "shouldTranslate" : false
     },
+    "(No content)" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(No content)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "（无内容）"
+          }
+        }
+      }
+    },
     "(No Content)" : {
       "localizations" : {
         "en" : {
@@ -421,6 +438,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "添加"
+          }
+        }
+      }
+    },
+    "Add any additional details for the classification." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add any additional details for the classification."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请补充任何额外的分类细节。"
           }
         }
       }
@@ -901,6 +934,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "操作出现了错误：%@"
+          }
+        }
+      }
+    },
+    "An image is provided with this request. Consider the visual details when selecting the candidate." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An image is provided with this request. Consider the visual details when selecting the candidate."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此请求附带图像。选择候选项时请参考视觉细节。"
           }
         }
       }
@@ -1867,6 +1916,23 @@
         }
       }
     },
+    "Choose how FlowDown proactively shares stored memories with the model during conversations and Shortcuts automations." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose how FlowDown proactively shares stored memories with the model during conversations and Shortcuts automations."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择 FlowDown 在对话与快捷指令自动化中向模型主动提供记忆的方式。"
+          }
+        }
+      }
+    },
     "Choose how we proactively shares stored memories with the model during conversations and automations. This includes system Shortcuts." : {
       "localizations" : {
         "en" : {
@@ -1963,6 +2029,22 @@
         }
       }
     },
+    "Classify + Image" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Classify + Image"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "分类 + 图像"
+          }
+        }
+      }
+    },
     "Classify ${content}" : {
       "localizations" : {
         "en" : {
@@ -1979,6 +2061,22 @@
         }
       }
     },
+    "Classify ${image}" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Classify ${image}"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "分类 ${image}"
+          }
+        }
+      }
+    },
     "Classify Content" : {
       "localizations" : {
         "en" : {
@@ -1991,6 +2089,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "分类内容"
+          }
+        }
+      }
+    },
+    "Classify Content with Image" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Classify Content with Image"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "分类内容（含图像）"
           }
         }
       }
@@ -3277,6 +3391,23 @@
         }
       }
     },
+    "Date" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日期"
+          }
+        }
+      }
+    },
     "Date range cannot exceed 7 days" : {
       "localizations" : {
         "en" : {
@@ -4557,6 +4688,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "启用记忆"
+          }
+        }
+      }
+    },
+    "Enable memory tools during inference" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable memory tools during inference"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "推理时启用记忆工具"
           }
         }
       }
@@ -7197,6 +7345,23 @@
         }
       }
     },
+    "Keyword: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keyword: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关键词：%@"
+          }
+        }
+      }
+    },
     "Large" : {
       "comment" : "Font Size",
       "localizations" : {
@@ -8976,6 +9141,40 @@
         }
       }
     },
+    "On date: %@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On date: %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日期：%@"
+          }
+        }
+      }
+    },
+    "Only conversations with images" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only conversations with images"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "仅包含图片的对话"
+          }
+        }
+      }
+    },
     "Open" : {
       "localizations" : {
         "en" : {
@@ -10711,6 +10910,23 @@
         }
       }
     },
+    "Save response to conversation history" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save response to conversation history"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将回复保存到对话记录"
+          }
+        }
+      }
+    },
     "Save to Conversation" : {
       "localizations" : {
         "en" : {
@@ -10947,6 +11163,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已找到 %lld 个网站，正在获取数据"
+          }
+        }
+      }
+    },
+    "Select an image to accompany the request." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select an image to accompany the request."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请选择要随请求附上的图像。"
           }
         }
       }
@@ -14195,6 +14427,22 @@
         }
       }
     },
+    "Use the model to classify content with the help of an accompanying image. If the model cannot decide, the first candidate is returned." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use the model to classify content with the help of an accompanying image. If the model cannot decide, the first candidate is returned."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用模型结合附带的图像对内容进行分类。如果模型无法决定，则返回第一个候选项。"
+          }
+        }
+      }
+    },
     "Use the Open URL action with %@ to launch FlowDown and start a conversation." : {
       "localizations" : {
         "en" : {
@@ -15103,6 +15351,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "应该总结什么文本？"
+          }
+        }
+      }
+    },
+    "When enabled, FlowDown will include stored memories in system prompts and Shortcuts inference even if memory tools are disabled." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When enabled, FlowDown will include stored memories in system prompts and Shortcuts inference even if memory tools are disabled."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开启后，即使未启用记忆工具，FlowDown 也会在系统提示词与快捷指令推理中提供已存储的记忆。"
           }
         }
       }
