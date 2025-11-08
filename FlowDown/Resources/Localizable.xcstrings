@@ -6119,18 +6119,12 @@
         }
       }
     },
-    "Generate Model Response with Image" : {
+    "Generate Model Response (Can Send Image)" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Generate Model Response with Image"
-          }
-        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "生成带图像的模型回复"
+            "value" : "生成回复（可发送图片）"
           }
         }
       }

@@ -62,7 +62,7 @@ struct GenerateResponseIntent: AppIntent {
 @available(iOS 18.0, macCatalyst 18.0, *)
 struct GenerateChatResponseWithImagesIntent: AppIntent {
     static var title: LocalizedStringResource {
-        "Generate Model Response with Image"
+        "Generate Model Response (Can Send Image)"
     }
 
     static var description: IntentDescription {
