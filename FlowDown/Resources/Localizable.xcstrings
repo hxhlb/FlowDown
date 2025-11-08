@@ -1691,18 +1691,18 @@
         }
       }
     },
-    "Candidates" : {
+    "Candidate %@" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Candidates"
+            "value" : "Candidate %@"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "候选项"
+            "value" : "候选项 %@"
           }
         }
       }
