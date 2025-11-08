@@ -109,7 +109,7 @@ class CloudModelEditorController: StackScrollController {
             let input = AlertInputViewController(
                 title: "Edit Workgroup (Optional)",
                 message: "This value will be added to the request to distinguish the workgroup on the remote. This part is optional, if not used, leave it blank.",
-                placeholder: "workgroup-xxx",
+                placeholder: "xx-xxx",
                 text: model.token
             ) { newToken in
                 ModelManager.shared.editCloudModel(identifier: model.id) {

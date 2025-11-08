@@ -1707,22 +1707,6 @@
         }
       }
     },
-    "Candidates (Text Input)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Candidates (Text Input)"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "候选项（文本输入）"
-          }
-        }
-      }
-    },
     "Candidates:" : {
       "localizations" : {
         "en" : {
@@ -10116,38 +10100,6 @@
         }
       }
     },
-    "Provide candidate labels separated by new lines or commas." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Provide candidate labels separated by new lines or commas."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "请使用换行或逗号分隔候选标签。"
-          }
-        }
-      }
-    },
-    "Provide the candidate labels." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Provide the candidate labels."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "请提供候选标签。"
-          }
-        }
-      }
-    },
     "Query Calendar" : {
       "localizations" : {
         "en" : {
@@ -11267,38 +11219,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用选中的模型发送 ${message}"
-          }
-        }
-      }
-    },
-    "Send your message with the default model and optional image" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Send your message with the default model and optional image"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "使用默认模型发送消息，可选择附加图像"
-          }
-        }
-      }
-    },
-    "Send your message with the selected model and optional image" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Send your message with the selected model and optional image"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "使用所选模型发送消息，可选择附加图像"
           }
         }
       }
@@ -15508,22 +15428,6 @@
         }
       }
     },
-    "Which model should answer?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Which model should answer?"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "应该由哪个模型来回答？"
-          }
-        }
-      }
-    },
     "Which model should be the default?" : {
       "localizations" : {
         "en" : {
@@ -15536,54 +15440,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "你希望选择哪个模型作为默认？"
-          }
-        }
-      }
-    },
-    "Which model should perform the classification?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Which model should perform the classification?"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "应该由哪个模型来执行分类？"
-          }
-        }
-      }
-    },
-    "Which model should rewrite the text?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Which model should rewrite the text?"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "应该使用哪个模型来改写文本？"
-          }
-        }
-      }
-    },
-    "Which model should summarize the text?" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Which model should summarize the text?"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "应该使用哪个模型来总结文本？"
           }
         }
       }
@@ -15620,9 +15476,6 @@
         }
       }
     },
-    "workgroup-xxx" : {
-      "shouldTranslate" : false
-    },
     "Would you like to apply the new workgroup to all? This requires the inference endpoint and the old workgroup equal to the current editing." : {
       "localizations" : {
         "en" : {
@@ -15654,6 +15507,9 @@
           }
         }
       }
+    },
+    "xx-xxx" : {
+      "shouldTranslate" : false
     },
     "Yahoo Search" : {
       "localizations" : {

@@ -297,12 +297,11 @@ enum InferenceIntentHandler {
 
     private static func allWritingMemoryTools() -> [ModelTool] {
         ModelToolsManager.shared.tools.filter { tool in
-            guard tool.isEnabled else { return false }
-            return switch tool {
+            switch tool {
             case is MTStoreMemoryTool,
                  is MTUpdateMemoryTool,
                  is MTDeleteMemoryTool:
-                true
+                tool.isEnabled
             default:
                 false
             }

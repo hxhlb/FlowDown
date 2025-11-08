@@ -13,7 +13,7 @@ struct GenerateResponseIntent: AppIntent {
         "Send a message and get the model's response."
     }
 
-    @Parameter(title: "Model", default: nil, requestValueDialog: "Which model should answer?")
+    @Parameter(title: "Model", default: nil)
     var model: ShortcutsEntities.ModelEntity?
 
     @Parameter(title: "Message", requestValueDialog: "What do you want to ask?")
@@ -69,7 +69,7 @@ struct GenerateChatResponseWithImagesIntent: AppIntent {
         "Send a message and get the model's response."
     }
 
-    @Parameter(title: "Model", default: nil, requestValueDialog: "Which model should answer?")
+    @Parameter(title: "Model", default: nil)
     var model: ShortcutsEntities.ModelEntity?
 
     @Parameter(title: "Message", requestValueDialog: "What do you want to ask?")
@@ -86,7 +86,7 @@ struct GenerateChatResponseWithImagesIntent: AppIntent {
 
     static var parameterSummary: some ParameterSummary {
         When(\.$model, .hasAnyValue) {
-            Summary("Send your message with the selected model and optional image") {
+            Summary("Send your \(\.$message) with the selected model") {
                 \.$model
                 \.$message
                 \.$image
@@ -94,7 +94,7 @@ struct GenerateChatResponseWithImagesIntent: AppIntent {
                 \.$enableMemory
             }
         } otherwise: {
-            Summary("Send your message with the default model and optional image") {
+            Summary("Send your \(\.$message) with the default model") {
                 \.$model
                 \.$message
                 \.$image

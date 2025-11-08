@@ -10,13 +10,13 @@ struct ClassifyContentIntent: AppIntent {
         "Use the model to classify content into one of the provided candidates. If the model cannot decide, the first candidate is returned."
     }
 
-    @Parameter(title: "Model", default: nil, requestValueDialog: "Which model should perform the classification?")
+    @Parameter(title: "Model", default: nil)
     var model: ShortcutsEntities.ModelEntity?
 
     @Parameter(title: "Content", requestValueDialog: "What content should be classified?")
     var content: String
 
-    @Parameter(title: "Candidates", default: [], requestValueDialog: "Provide the candidate labels.")
+    @Parameter(title: "Candidates", default: [])
     var candidates: [String]
 
     static var parameterSummary: some ParameterSummary {
@@ -72,17 +72,14 @@ struct ClassifyContentWithImageIntent: AppIntent {
         "Use the model to classify content with the help of an accompanying image. If the model cannot decide, the first candidate is returned."
     }
 
-    @Parameter(title: "Model", default: nil, requestValueDialog: "Which model should perform the classification?")
+    @Parameter(title: "Model", default: nil)
     var model: ShortcutsEntities.ModelEntity?
 
     @Parameter(title: "Image", supportedContentTypes: [.image], requestValueDialog: "Select an image to accompany the request.")
     var image: IntentFile
 
-    @Parameter(title: "Candidates", default: [], requestValueDialog: "Provide the candidate labels.")
+    @Parameter(title: "Candidates", default: [])
     var candidates: [String]
-
-    @Parameter(title: "Candidates (Text Input)", default: nil, requestValueDialog: "Provide candidate labels separated by new lines or commas.")
-    var candidateTextInput: String?
 
     static var parameterSummary: some ParameterSummary {
         When(\.$model, .hasAnyValue) {
@@ -90,14 +87,12 @@ struct ClassifyContentWithImageIntent: AppIntent {
                 \.$model
                 \.$image
                 \.$candidates
-                \.$candidateTextInput
             }
         } otherwise: {
             Summary("Use the default model to classify the image") {
                 \.$model
                 \.$image
                 \.$candidates
-                \.$candidateTextInput
             }
         }
     }

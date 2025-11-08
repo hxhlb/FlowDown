@@ -10,7 +10,7 @@ struct SummarizeTextIntent: AppIntent {
         "Summarize content into a short paragraph."
     }
 
-    @Parameter(title: "Model", default: nil, requestValueDialog: "Which model should summarize the text?")
+    @Parameter(title: "Model", default: nil)
     var model: ShortcutsEntities.ModelEntity?
 
     @Parameter(title: "Content", requestValueDialog: "What text should be summarized?")
@@ -52,7 +52,7 @@ struct SummarizeTextUsingListIntent: AppIntent {
         "Summarize content into a list of key points."
     }
 
-    @Parameter(title: "Model", default: nil, requestValueDialog: "Which model should summarize the text?")
+    @Parameter(title: "Model", default: nil)
     var model: ShortcutsEntities.ModelEntity?
 
     @Parameter(title: "Content", requestValueDialog: "What text should be summarized?")

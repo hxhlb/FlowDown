@@ -10,7 +10,7 @@ struct ImproveWritingMoreProfessionalIntent: AppIntent {
         "Rewrite text in a more professional tone while preserving meaning."
     }
 
-    @Parameter(title: "Model", default: nil, requestValueDialog: "Which model should rewrite the text?")
+    @Parameter(title: "Model", default: nil)
     var model: ShortcutsEntities.ModelEntity?
 
     @Parameter(title: "Content", requestValueDialog: "What text should be rewritten?")
@@ -58,7 +58,7 @@ struct ImproveWritingMoreFriendlyIntent: AppIntent {
         "Rewrite text with a warmer and more approachable tone."
     }
 
-    @Parameter(title: "Model", default: nil, requestValueDialog: "Which model should rewrite the text?")
+    @Parameter(title: "Model", default: nil)
     var model: ShortcutsEntities.ModelEntity?
 
     @Parameter(title: "Content", requestValueDialog: "What text should be rewritten?")
@@ -106,7 +106,7 @@ struct ImproveWritingMoreConciseIntent: AppIntent {
         "Trim text to be more concise without losing the key message."
     }
 
-    @Parameter(title: "Model", default: nil, requestValueDialog: "Which model should rewrite the text?")
+    @Parameter(title: "Model", default: nil)
     var model: ShortcutsEntities.ModelEntity?
 
     @Parameter(title: "Content", requestValueDialog: "What text should be rewritten?")
