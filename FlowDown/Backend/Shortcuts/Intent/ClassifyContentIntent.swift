@@ -10,29 +10,47 @@ struct ClassifyContentIntent: AppIntent {
         "Use the model to classify content into one of the provided candidates. If the model cannot decide, the first candidate is returned."
     }
 
+    @Parameter(title: "Model", default: nil, requestValueDialog: "Which model should perform the classification?")
+    var model: ShortcutsEntities.ModelEntity?
+
     @Parameter(title: "Content", requestValueDialog: "What content should be classified?")
     var content: String
 
-    @Parameter(title: "Candidates", requestValueDialog: "Provide the candidate labels.")
+    @Parameter(title: "Candidates", default: [], requestValueDialog: "Provide the candidate labels.")
     var candidates: [String]
 
     static var parameterSummary: some ParameterSummary {
-        Summary("Classify the provided content using the candidate list") {
-            \.$content
-            \.$candidates
+        When(\.$model, .hasAnyValue) {
+            Summary("Use the selected model to classify your \(\.$content)") {
+                \.$model
+                \.$candidates
+            }
+        } otherwise: {
+            Summary("Use the default model to classify your \(\.$content)") {
+                \.$model
+                \.$candidates
+            }
         }
     }
 
     func perform() async throws -> some IntentResult & ReturnsValue<String> & ProvidesDialog {
+        let trimmedContent = content.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedContent.isEmpty else {
+            throw ShortcutError.emptyMessage
+        }
+
+        let resolvedCandidates = try CandidateInputResolver.resolveCandidates(
+            manualCandidates: candidates
+        )
+
         let request = try ClassificationPromptBuilder.make(
-            content: content,
-            candidates: candidates,
-            requireContent: true,
+            content: trimmedContent,
+            candidates: resolvedCandidates,
             includeImageInstruction: false
         )
 
         let response = try await InferenceIntentHandler.execute(
-            model: nil,
+            model: model,
             message: request.message,
             image: nil,
             options: .init(allowsImages: false)
@@ -54,33 +72,49 @@ struct ClassifyContentWithImageIntent: AppIntent {
         "Use the model to classify content with the help of an accompanying image. If the model cannot decide, the first candidate is returned."
     }
 
-    @Parameter(title: "Content", default: "", requestValueDialog: "Add any additional details for the classification.")
-    var content: String
+    @Parameter(title: "Model", default: nil, requestValueDialog: "Which model should perform the classification?")
+    var model: ShortcutsEntities.ModelEntity?
 
     @Parameter(title: "Image", supportedContentTypes: [.image], requestValueDialog: "Select an image to accompany the request.")
     var image: IntentFile
 
-    @Parameter(title: "Candidates", requestValueDialog: "Provide the candidate labels.")
+    @Parameter(title: "Candidates", default: [], requestValueDialog: "Provide the candidate labels.")
     var candidates: [String]
 
+    @Parameter(title: "Candidates (Text Input)", default: nil, requestValueDialog: "Provide candidate labels separated by new lines or commas.")
+    var candidateTextInput: String?
+
     static var parameterSummary: some ParameterSummary {
-        Summary("Classify the provided image using the candidate list") {
-            \.$content
-            \.$image
-            \.$candidates
+        When(\.$model, .hasAnyValue) {
+            Summary("Use the selected model to classify the image") {
+                \.$model
+                \.$image
+                \.$candidates
+                \.$candidateTextInput
+            }
+        } otherwise: {
+            Summary("Use the default model to classify the image") {
+                \.$model
+                \.$image
+                \.$candidates
+                \.$candidateTextInput
+            }
         }
     }
 
     func perform() async throws -> some IntentResult & ReturnsValue<String> & ProvidesDialog {
+        let resolvedCandidates = try CandidateInputResolver.resolveCandidates(
+            manualCandidates: candidates
+        )
+
         let request = try ClassificationPromptBuilder.make(
-            content: content,
-            candidates: candidates,
-            requireContent: false,
+            content: nil,
+            candidates: resolvedCandidates,
             includeImageInstruction: true
         )
 
         let response = try await InferenceIntentHandler.execute(
-            model: nil,
+            model: model,
             message: request.message,
             image: image,
             options: .init(allowsImages: true)
@@ -121,15 +155,11 @@ private enum ClassificationPromptBuilder {
     }
 
     static func make(
-        content: String,
+        content: String?,
         candidates: [String],
-        requireContent: Bool,
         includeImageInstruction: Bool
     ) throws -> Request {
-        let trimmedContent = content.trimmingCharacters(in: .whitespacesAndNewlines)
-        if requireContent, trimmedContent.isEmpty {
-            throw ShortcutError.emptyMessage
-        }
+        let trimmedContent = content?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
 
         let sanitizedCandidates = candidates
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
@@ -141,49 +171,41 @@ private enum ClassificationPromptBuilder {
 
         let candidateList = sanitizedCandidates.enumerated()
             .map { index, value in
-                "\(index + 1). \(value)"
+                // use xml tagging to help model better recognize the candidates
+                let key = index + 1
+                let keyText = "Label-\(key)"
+                return "<\(keyText)>\(value)</\(keyText)>"
             }
             .joined(separator: "\n")
 
-        let baseInstruction = String(
-            localized: "You are a classification assistant. Choose the best candidate for the provided content."
-        )
-
-        let imageInstruction = String(
-            localized: "An image is provided with this request. Consider the visual details when selecting the candidate."
-        )
-
-        let candidateUsageInstruction = String(
-            localized: "Select exactly one label from the candidate list."
-        )
-
-        let xmlOutputInstruction = String(
-            localized: "Respond only with XML formatted as <classification><label>VALUE</label></classification>, replacing VALUE with a label from the candidate list."
-        )
-
-        let fallbackInstructionFormat = String(
-            localized: "If you are unsure, use '%@' for VALUE."
-        )
-        let fallbackInstruction = String(format: fallbackInstructionFormat, primaryCandidate)
-
-        var instructionSegments: [String] = [baseInstruction]
+        var instructionSegments = [
+            "You are a classification assistant. Choose the best candidate for the provided content.",
+        ]
 
         if includeImageInstruction {
-            instructionSegments.append(imageInstruction)
+            instructionSegments.append(
+                "An image is provided with this request. Consider the visual details when selecting the candidate."
+            )
         }
 
-        instructionSegments.append(candidateUsageInstruction)
+        instructionSegments.append(
+            "An image is provided with this request. Consider the visual details when selecting the candidate."
+        )
 
-        instructionSegments.append(String(localized: "Candidates:"))
+        instructionSegments.append("Candidates:")
         instructionSegments.append(candidateList)
 
         if !trimmedContent.isEmpty {
-            instructionSegments.append(String(localized: "Content:"))
+            instructionSegments.append("Content:")
             instructionSegments.append(trimmedContent)
         }
 
-        instructionSegments.append(xmlOutputInstruction)
-        instructionSegments.append(fallbackInstruction)
+        instructionSegments.append(
+            "Respond only with XML formatted as <classification><label>VALUE</label></classification>, replacing VALUE with a label from the candidate list. Without explanation or additional text or quotation marks."
+        )
+        instructionSegments.append(
+            "If you are unsure, use \(primaryCandidate) for VALUE."
+        )
 
         let message = instructionSegments.joined(separator: "\n\n")
 
@@ -192,6 +214,31 @@ private enum ClassificationPromptBuilder {
             sanitizedCandidates: sanitizedCandidates,
             primaryCandidate: primaryCandidate
         )
+    }
+}
+
+private enum CandidateInputResolver {
+    static func resolveCandidates(
+        manualCandidates: [String]
+    ) throws -> [String] {
+        var ordered: [String] = []
+        var seen: Set<String> = []
+
+        func append(_ candidate: String) {
+            let trimmed = candidate.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !trimmed.isEmpty else { return }
+            let normalized = trimmed.folding(options: [.caseInsensitive, .diacriticInsensitive], locale: .current)
+            guard seen.insert(normalized).inserted else { return }
+            ordered.append(trimmed)
+        }
+
+        manualCandidates.forEach(append)
+
+        guard !ordered.isEmpty else {
+            throw ShortcutError.invalidCandidates
+        }
+
+        return ordered
     }
 }
 
