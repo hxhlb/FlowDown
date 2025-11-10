@@ -19,7 +19,7 @@ extension UIImage {
         if image.size.width > 1024 || image.size.height > 1024 {
             if let scaled = image.resize(
                 withSize: CGSize(width: 1024, height: 1024),
-                contentMode: .contentFill
+                contentMode: .contentAspectFit
             ) { image = scaled }
         }
 
