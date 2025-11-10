@@ -23,7 +23,8 @@ extension MessageListView {
             lock.lock()
             if let cachedHash = messageDidChanged[id],
                cachedHash == contentHash,
-               let nodes = cache[id] {
+               let nodes = cache[id]
+            {
                 lock.unlock()
                 return nodes
             }
