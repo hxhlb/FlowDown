@@ -151,9 +151,30 @@ private extension ColorfulShadowView {
         case .idle:
             shadowRadius = 1.0
             gradientView.setColors(idlePalette, animated: true, repeats: true)
+            scheduleSpeedStop()
         case .appleIntelligence:
             shadowRadius = 1.0
             gradientView.setColors(intelligentPalette, animated: true, repeats: true)
+            gradientView.speed = 1
         }
+    }
+
+    @MainActor
+    @objc func scheduleSpeedStop() {
+        assert(Thread.isMainThread)
+        NSObject.cancelPreviousPerformRequests(
+            withTarget: self,
+            selector: #selector(stopAnimation),
+            object: nil
+        )
+        perform(
+            #selector(stopAnimation),
+            with: nil,
+            afterDelay: 2.0
+        )
+    }
+
+    @objc private func stopAnimation() {
+        gradientView.speed = 0
     }
 }
