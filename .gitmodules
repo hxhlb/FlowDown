@@ -1,0 +1,3 @@
+[submodule "Frameworks/ChatClientKit"]
+	path = Frameworks/ChatClientKit
+	url = https://github.com/Lakr233/ChatClientKit.git
