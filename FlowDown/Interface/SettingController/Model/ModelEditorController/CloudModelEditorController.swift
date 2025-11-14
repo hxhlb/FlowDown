@@ -321,19 +321,6 @@ class CloudModelEditorController: StackScrollController {
         stackView.addArrangedSubviewWithMargin(nameView)
         stackView.addArrangedSubview(SeparatorView())
 
-        let temperatureView = ConfigurableInfoView()
-        temperatureView.configure(icon: .init(systemName: "sparkles"))
-        temperatureView.configure(title: "Imagination")
-        temperatureView.configure(description: "This model uses the global temperature preference. Adjust it from Inference Settings.")
-        let globalTemperature = Double(ModelManager.shared.temperature)
-        temperatureView.configure(value: String(
-            format: String(localized: "Global @ %.2f"),
-            globalTemperature
-        ))
-        temperatureView.isUserInteractionEnabled = false
-        stackView.addArrangedSubviewWithMargin(temperatureView)
-        stackView.addArrangedSubview(SeparatorView())
-
         let contextListView = ConfigurableInfoView()
         contextListView.configure(icon: .init(systemName: "list.bullet"))
         contextListView.configure(title: "Context")
@@ -887,32 +874,88 @@ private extension CloudModelEditorController {
                 children: [reasoningKeysMenu, reasoningBudgetMenu]
             ))
 
-            let globalTemperature = Double(ModelManager.shared.temperature)
             let samplingActions: [UIAction] = [
-                UIAction(title: String(localized: "Set temperature"), image: UIImage(systemName: "sparkles")) { _ in
-                    controller.updateValue {
-                        $0["temperature"] = globalTemperature
-                    }
+                UIAction(title: String(localized: "Set \("temperature")"), image: UIImage(systemName: "sparkles")) { _ in
+                    /*
+                     This setting influences the variety in the model's responses. Lower values lead to more predictable and typical responses, while higher values encourage more diverse and less common responses. At 0, the model always gives the same response for a given input.
+                     Optional, float, 0.0 to 2.0
+                     Default: 1.0
+                     */
+                    controller.updateValue { $0["temperature"] = Double(ModelManager.shared.temperature) }
                 },
-                UIAction(title: String(localized: "Set top_p"), image: UIImage(systemName: "chart.line.uptrend.xyaxis")) { _ in
-                    controller.updateValue {
-                        $0["top_p"] = 0.9
-                    }
+                UIAction(title: String(localized: "Set \("top_p")"), image: UIImage(systemName: "sparkles")) { _ in
+                    /*
+                     This setting limits the model's choices to a percentage of likely tokens: only the top tokens whose probabilities add up to P. A lower value makes the model's responses more predictable, while the default setting allows for a full range of token choices. Think of it like a dynamic Top-K.
+                     Optional, float, 0.0 to 1.0
+                     Default: 1.0
+                     */
+                    controller.updateValue { $0["top_p"] = 0.9 }
                 },
-                UIAction(title: String(localized: "Set top_k"), image: UIImage(systemName: "number")) { _ in
-                    controller.updateValue {
-                        $0["top_k"] = 40
-                    }
+                UIAction(title: String(localized: "Set \("top_k")"), image: UIImage(systemName: "sparkles")) { _ in
+                    /*
+                     This limits the model's choice of tokens at each step, making it choose from a smaller set. A value of 1 means the model will always pick the most likely next token, leading to predictable results. By default this setting is disabled, making the model to consider all choices.
+                     Optional, integer, 0 or above
+                     Default: 0 (disabled)
+                     */
+                    controller.updateValue { $0["top_k"] = 40 }
                 },
-                UIAction(title: String(localized: "Set presence_penalty"), image: UIImage(systemName: "person.fill.badge.plus")) { _ in
-                    controller.updateValue {
-                        $0["presence_penalty"] = 0.5
-                    }
+                UIAction(title: String(localized: "Set \("top_a")"), image: UIImage(systemName: "sparkles")) { _ in
+                    /*
+                     Consider only the top tokens with "sufficiently high" probabilities based on the probability of the most likely token. Think of it like a dynamic Top-P.
+                     A lower Top-A value focuses the choices based on the highest probability token but with a narrower scope. A higher Top-A value does not necessarily affect the creativity of the output, but rather refines the filtering process based on the maximum probability.
+                     Optional, float, 0.0 to 1.0
+                     Default: 0.0
+                     */
+                    controller.updateValue { $0["top_a"] = 0.0 }
                 },
-                UIAction(title: String(localized: "Set frequency_penalty"), image: UIImage(systemName: "waveform.path.ecg")) { _ in
-                    controller.updateValue {
-                        $0["frequency_penalty"] = 0.5
-                    }
+                UIAction(title: String(localized: "Set \("presence_penalty")"), image: UIImage(systemName: "sparkles")) { _ in
+                    /*
+                     Adjusts how often the model repeats specific tokens already used in the input. Higher values make such repetition less likely, while negative values do the opposite. Token penalty does not scale with the number of occurrences. Negative values will encourage token reuse.
+                     Optional, float, -2.0 to 2.0
+                     Default: 0.0
+                     */
+                    controller.updateValue { $0["presence_penalty"] = 0.0 }
+                },
+                UIAction(title: String(localized: "Set \("frequency_penalty")"), image: UIImage(systemName: "sparkles")) { _ in
+                    /*
+                     This setting aims to control the repetition of tokens based on how often they appear in the input. It tries to use less frequently those tokens that appear more in the input, proportional to how frequently they occur. Token penalty scales with the number of occurrences. Negative values will encourage token reuse.
+                     Optional, float, -2.0 to 2.0
+                     Default: 0.0
+                     */
+                    controller.updateValue { $0["frequency_penalty"] = 0.5 }
+                },
+                UIAction(title: String(localized: "Set \("repetition_penalty")"), image: UIImage(systemName: "sparkles")) { _ in
+                    /*
+                     Helps to reduce the repetition of tokens from the input. A higher value makes the model less likely to repeat tokens, but too high a value can make the output less coherent (often with run-on sentences that lack small words).
+                     Optional, float, 0.0 to 2.0
+                     Default: 1.0
+                     */
+                    controller.updateValue { $0["repetition_penalty"] = 1.0 }
+                },
+                UIAction(title: String(localized: "Set \("min_p")"), image: UIImage(systemName: "sparkles")) { _ in
+                    /*
+                     Represents the minimum probability for a token to be considered, relative to the probability of the most likely token. (The value changes depending on the confidence level of the most probable token.)
+                     If your Min-P is set to 0.1, that means it will only allow for tokens that are at least 1/10th as probable as the best possible option.
+                     Optional, float, 0.0 to 1.0
+                     Default: 0.0
+                     */
+                    controller.updateValue { $0["min_p"] = 0.0 }
+                },
+                UIAction(title: String(localized: "Set \("max_tokens")"), image: UIImage(systemName: "sparkles")) { _ in
+                    /*
+                     This sets the upper limit for the number of tokens the model can generate in response. It won't produce more than this limit.
+                     The maximum value is the context length minus the prompt length.
+                     Optional, integer, 1 or above
+                     */
+                    controller.updateValue { $0["max_tokens"] = 4096 }
+                },
+                UIAction(title: String(localized: "Set \("seed")"), image: UIImage(systemName: "sparkles")) { _ in
+                    /*
+                     If specified, the inferencing will sample deterministically, such that repeated requests with the same seed and parameters should return the same result.
+                     Determinism is not guaranteed for some models.
+                     Optional, integer
+                     */
+                    controller.updateValue { $0["seed"] = 114_514 }
                 },
             ]
             children.append(UIMenu(
@@ -922,71 +965,24 @@ private extension CloudModelEditorController {
             ))
 
             var providerChildren: [UIMenuElement] = []
-            let dataCollectionOptions: [(title: String.LocalizationValue, value: String)] = [
-                ("Set data_collection = deny", "deny"),
-                ("Set data_collection = allow", "allow"),
-                ("Set data_collection = limited", "limited"),
-            ]
-            providerChildren.append(contentsOf: dataCollectionOptions.map { option in
-                UIAction(title: String(localized: option.title), image: UIImage(systemName: "hand.raised.fill")) { _ in
+            providerChildren.append(
+                UIAction(title: "Set \("data_collection") to \("deny")", image: UIImage(systemName: "hand.raised.fill")) { _ in
                     controller.updateValue { dic in
                         var provider = dic["provider"] as? [String: Any] ?? [:]
-                        provider["data_collection"] = option.value
+                        provider["data_collection"] = "deny"
                         dic["provider"] = provider
                     }
                 }
-            })
-
-            providerChildren.append(contentsOf: [true, false].map { flag in
-                UIAction(
-                    title: flag
-                        ? String(localized: "Enable zdr")
-                        : String(localized: "Disable zdr"),
-                    image: UIImage(systemName: "switch.2")
-                ) { _ in
+            )
+            providerChildren.append(
+                UIAction(title: "Set \("zdr") to \("true")", image: UIImage(systemName: "hand.raised.fill")) { _ in
                     controller.updateValue { dic in
                         var provider = dic["provider"] as? [String: Any] ?? [:]
-                        provider["zdr"] = flag
+                        provider["zdr"] = true
                         dic["provider"] = provider
                     }
                 }
-            })
-
-            providerChildren.append(UIAction(
-                title: String(localized: "Add provider order…"),
-                image: UIImage(systemName: "text.badge.plus")
-            ) { _ in
-                let input = AlertInputViewController(
-                    title: String(localized: "Provider Order"),
-                    message: String(localized: "Enter a provider name to append to the order list."),
-                    placeholder: "Cerebras",
-                    text: ""
-                ) { text in
-                    let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
-                    guard !trimmed.isEmpty else { return }
-                    controller.updateValue { dic in
-                        var provider = dic["provider"] as? [String: Any] ?? [:]
-                        var order = provider["order"] as? [String] ?? []
-                        if !order.contains(trimmed) {
-                            order.append(trimmed)
-                        }
-                        provider["order"] = order
-                        dic["provider"] = provider
-                    }
-                }
-                controller.present(input, animated: true)
-            })
-
-            providerChildren.append(UIAction(
-                title: String(localized: "Clear provider overrides"),
-                image: UIImage(systemName: "trash"),
-                attributes: [.destructive]
-            ) { _ in
-                controller.updateValue { dic in
-                    dic.removeValue(forKey: "provider")
-                }
-            })
-
+            )
             children.append(UIMenu(
                 title: String(localized: "Provider Options"),
                 image: UIImage(systemName: "server.rack"),

@@ -273,20 +273,6 @@ class LocalModelEditorController: StackScrollController {
         ) { $0.bottom /= 2 }
         stackView.addArrangedSubview(SeparatorView())
 
-        let localTemperatureView = ConfigurableInfoView()
-        localTemperatureView.configure(icon: .init(systemName: "sparkles"))
-        localTemperatureView.configure(title: "Imagination")
-        localTemperatureView.configure(description: "Local models use the global temperature preference. Adjust it from Inference Settings.")
-        localTemperatureView.configure(
-            value: String(
-                format: String(localized: "Global @ %.2f"),
-                Double(ModelManager.shared.temperature)
-            )
-        )
-        localTemperatureView.isUserInteractionEnabled = false
-        stackView.addArrangedSubviewWithMargin(localTemperatureView)
-        stackView.addArrangedSubview(SeparatorView())
-
         let contextView = ConfigurableInfoView()
         contextView.configure(icon: .init(systemName: "list.bullet"))
         contextView.configure(title: "Context")

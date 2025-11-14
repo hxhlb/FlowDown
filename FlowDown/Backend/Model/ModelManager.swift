@@ -18,10 +18,6 @@ class ModelManager: NSObject {
     static let shared = ModelManager()
     static let flowdownModelConfigurationExtension = "fdmodel"
 
-    enum TemperatureStrategy {
-        case send(Double)
-    }
-
     typealias ModelIdentifier = String
     typealias LocalModelIdentifier = LocalModel.ID
     typealias CloudModelIdentifier = CloudModel.ID
@@ -217,10 +213,6 @@ class ModelManager: NSObject {
             return localModel.context.rawValue
         }
         return 8192
-    }
-
-    func temperatureStrategy(for _: ModelIdentifier?) -> TemperatureStrategy {
-        .send(Double(temperature))
     }
 
     var temperaturePresets: [(title: String, value: Double, icon: String)] {

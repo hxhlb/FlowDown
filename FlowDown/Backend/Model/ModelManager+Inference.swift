@@ -351,16 +351,12 @@ extension ModelManager {
             additionalBodyField: modelBodyFields(for: modelID)
         )
         await client.errorCollector.clear()
-        let requestTemperature: Double = switch temperatureStrategy(for: modelID) {
-        case let .send(value):
-            value
-        }
 
         let stream = try await client.streamingChatCompletionRequest(
             body: .init(
                 messages: prepareRequestBody(modelID: modelID, messages: input),
                 maxCompletionTokens: maxCompletionTokens,
-                temperature: requestTemperature,
+                temperature: .init(temperature),
                 tools: tools
             )
         ).compactMap { streamObject -> InferenceMessage in

@@ -2379,22 +2379,6 @@
         }
       }
     },
-    "Cloud Models" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cloud Models"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "云端模型"
-          }
-        }
-      }
-    },
     "Code Viewer" : {
       "localizations" : {
         "en" : {
@@ -3465,38 +3449,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "当前位置信息：\n\n%@"
-          }
-        }
-      }
-    },
-    "Custom" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Custom"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自定义"
-          }
-        }
-      }
-    },
-    "Custom @ %.2f" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Custom @ %.2f"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "自定义 @ %.2f"
           }
         }
       }
@@ -7357,22 +7309,6 @@
         }
       }
     },
-    "Inference default" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Inference default"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "推理默认"
-          }
-        }
-      }
-    },
     "Inference Endpoint" : {
       "localizations" : {
         "en" : {
@@ -8092,22 +8028,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "编辑本地模型"
-          }
-        }
-      }
-    },
-    "Local Models" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Local Models"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "本地模型"
           }
         }
       }
@@ -10917,6 +10837,22 @@
         }
       }
     },
+    "Provider Options" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provider Options"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "提供商选项"
+          }
+        }
+      }
+    },
     "Query Calendar" : {
       "localizations" : {
         "en" : {
@@ -10993,6 +10929,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "推理预算"
+          }
+        }
+      }
+    },
+    "Reasoning Keys" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reasoning Keys"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "推理参数"
           }
         }
       }
@@ -11656,6 +11608,22 @@
         }
       }
     },
+    "Sampling Parameters" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sampling Parameters"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "采样参数"
+          }
+        }
+      }
+    },
     "Sampling request was denied by the user." : {
       "localizations" : {
         "en" : {
@@ -12100,6 +12068,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "设定"
+          }
+        }
+      }
+    },
+    "Set %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set %@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置为 %@"
+          }
+        }
+      }
+    },
+    "Set %@ to %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set %1$@ to %2$@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将 %1$@ 设置为 %2$@"
           }
         }
       }
