@@ -165,7 +165,7 @@ extension MessageListView: ListViewAdapter {
                     self?.handleLinkTapped(link, in: range, at: aiMessageView.convert(touchLocation, to: self))
                 }
                 aiMessageView.codePreviewHandler = { [weak self] lang, code in
-                    self?.detailDetailController(code: code, language: lang, title: String(localized: "Code Viewer"))
+                    self?.presentAndReturnDetailCodeController(code: code, language: lang, title: String(localized: "Code Viewer"))
                 }
             } else { assertionFailure() }
         } else if let hintMessageView = rowView as? HintMessageView {
@@ -286,27 +286,12 @@ extension MessageListView: ListViewAdapter {
     }
 
     private func presentToolCallDetails(for messageIdentifier: Message.ID, status: Message.ToolStatus) {
-        let viewer = TextViewerController(editable: false)
-        viewer.title = String(localized: "Text Content")
-        viewer.text = toolCallDetailsText(for: messageIdentifier, status: status)
-        #if targetEnvironment(macCatalyst)
-            let nav = UINavigationController(rootViewController: viewer)
-            nav.view.backgroundColor = .background
-            let holder = AlertBaseController(
-                rootViewController: nav,
-                preferredWidth: 555,
-                preferredHeight: 555
-            )
-            holder.shouldDismissWhenTappedAround = true
-            holder.shouldDismissWhenEscapeKeyPressed = true
-        #else
-            let holder = UINavigationController(rootViewController: viewer)
-            holder.preferredContentSize = .init(width: 555, height: 555 - holder.navigationBar.frame.height)
-            holder.modalTransitionStyle = .coverVertical
-            holder.modalPresentationStyle = .formSheet
-            holder.view.backgroundColor = .background
-        #endif
-        parentViewController?.present(holder, animated: true)
+        let text = NSAttributedString(string: toolCallDetailsText(for: messageIdentifier, status: status))
+        presentAndReturnDetailCodeController(
+            code: text,
+            language: "json",
+            title: String(localized: "Text Content")
+        )
     }
 
     private func toolCallDetailsText(for messageIdentifier: Message.ID, status: Message.ToolStatus) -> String {
@@ -426,7 +411,7 @@ extension MessageListView: ListViewAdapter {
                     )
                 },
                 UIAction(title: String(localized: "View Raw"), image: .init(systemName: "eye")) { [weak self] _ in
-                    self?.detailDetailController(
+                    self?.presentAndReturnDetailCodeController(
                         code: .init(string: representation.content),
                         language: "markdown",
                         title: String(localized: "Raw Content")
@@ -460,7 +445,7 @@ extension MessageListView: ListViewAdapter {
                 ]),
                 UIMenu(options: [.displayInline], children: [
                     UIAction(title: String(localized: "Edit"), image: .init(systemName: "pencil")) { [weak self] _ in
-                        let viewer = self?.detailDetailController(
+                        let viewer = self?.presentAndReturnDetailCodeController(
                             code: .init(string: representation.content),
                             language: "markdown",
                             title: String(localized: "Edit")
@@ -502,7 +487,7 @@ extension MessageListView: ListViewAdapter {
     }
 
     @discardableResult
-    func detailDetailController(code: NSAttributedString, language: String?, title: String) -> UIViewController {
+    func presentAndReturnDetailCodeController(code: NSAttributedString, language: String?, title: String) -> UIViewController {
         let controller: UIViewController
 
         if language?.lowercased() == "html" {
