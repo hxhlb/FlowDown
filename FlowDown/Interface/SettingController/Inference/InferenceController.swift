@@ -221,11 +221,14 @@ extension SettingController.SettingContent {
                     guard let self else { return [] }
                     return ModelManager.shared.buildModelSelectionMenu(
                         currentSelection: ModelManager.ModelIdentifier.defaultModelForConversation,
-                        allowSelectionWithNone: true
-                    ) { [weak self] identifier in
-                        ModelManager.ModelIdentifier.defaultModelForConversation = identifier
-                        self?.updateDefaultModelinfoFile()
-                    }
+                        requiresCapabilities: [],
+                        allowSelectionWithNone: true,
+                        onCompletion: { [weak self] identifier in
+                            ModelManager.ModelIdentifier.defaultModelForConversation = identifier
+                            self?.updateDefaultModelinfoFile()
+                        },
+                        includeQuickActions: false
+                    )
                 }
                 handledConvModel = true
             }
@@ -241,11 +244,14 @@ extension SettingController.SettingContent {
                     guard let self else { return [] }
                     return ModelManager.shared.buildModelSelectionMenu(
                         currentSelection: ModelManager.ModelIdentifier.defaultModelForConversation,
-                        allowSelectionWithNone: true
-                    ) { [weak self] identifier in
-                        ModelManager.ModelIdentifier.defaultModelForConversation = identifier
-                        self?.updateDefaultModelinfoFile()
-                    }
+                        requiresCapabilities: [],
+                        allowSelectionWithNone: true,
+                        onCompletion: { [weak self] identifier in
+                            ModelManager.ModelIdentifier.defaultModelForConversation = identifier
+                            self?.updateDefaultModelinfoFile()
+                        },
+                        includeQuickActions: false
+                    )
                 }
             }
 
@@ -283,11 +289,14 @@ extension SettingController.SettingContent {
                 }
                 return ModelManager.shared.buildModelSelectionMenu(
                     currentSelection: ModelManager.ModelIdentifier.storedAuxiliaryTaskModel,
-                    allowSelectionWithNone: true
-                ) { [weak self] identifier in
-                    ModelManager.ModelIdentifier.defaultModelForAuxiliaryTask = identifier
-                    self?.updateDefaultModelinfoFile()
-                }
+                    requiresCapabilities: [],
+                    allowSelectionWithNone: true,
+                    onCompletion: { [weak self] identifier in
+                        ModelManager.ModelIdentifier.defaultModelForAuxiliaryTask = identifier
+                        self?.updateDefaultModelinfoFile()
+                    },
+                    includeQuickActions: false
+                )
             }
 
             if defaultAuxiliaryModelAlignWithChatModel.boolValue {
@@ -317,11 +326,13 @@ extension SettingController.SettingContent {
                 return ModelManager.shared.buildModelSelectionMenu(
                     currentSelection: ModelManager.ModelIdentifier.defaultModelForAuxiliaryVisualTask,
                     requiresCapabilities: [.visual],
-                    allowSelectionWithNone: true
-                ) { [weak self] identifier in
-                    ModelManager.ModelIdentifier.defaultModelForAuxiliaryVisualTask = identifier
-                    self?.updateDefaultModelinfoFile()
-                }
+                    allowSelectionWithNone: true,
+                    onCompletion: { [weak self] identifier in
+                        ModelManager.ModelIdentifier.defaultModelForAuxiliaryVisualTask = identifier
+                        self?.updateDefaultModelinfoFile()
+                    },
+                    includeQuickActions: false
+                )
             }
         }
     }
