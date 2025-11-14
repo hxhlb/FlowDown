@@ -123,6 +123,17 @@ final class ShimmerTextLabel: UILabel {
         return super.intrinsicContentSize
     }
 
+    override var text: String? {
+        didSet {
+            // When text changes during animation, refresh cached size so layout can expand
+            if isAnimating {
+                cachedIntrinsicSize = super.intrinsicContentSize
+                invalidateIntrinsicContentSize()
+                setNeedsLayout()
+            }
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupGradientLayer()
@@ -146,7 +157,13 @@ final class ShimmerTextLabel: UILabel {
     override func layoutSubviews() {
         super.layoutSubviews()
         if isAnimating {
+            // If cached size is zero width (started shimmer before text assigned), fix it now
+            if let cached = cachedIntrinsicSize, cached.width == 0 {
+                let real = super.intrinsicContentSize
+                if real.width > 0 { cachedIntrinsicSize = real }
+            }
             gradientLayer.frame = bounds
+            updateMaskForCurrentBoundsIfNeeded()
         }
     }
 
@@ -243,7 +260,7 @@ final class ShimmerTextLabel: UILabel {
     }
 
     private func createTextMaskLayer() -> CALayer? {
-        guard let text, !text.isEmpty else { return nil }
+        guard let text, !text.isEmpty, bounds.width > 0, bounds.height > 0 else { return nil }
 
         // Render text to image using UIGraphicsImageRenderer
         let renderer = UIGraphicsImageRenderer(size: bounds.size)
@@ -267,6 +284,14 @@ final class ShimmerTextLabel: UILabel {
         maskLayer.contentsScale = UIScreen.main.scale
 
         return maskLayer
+    }
+
+    private func updateMaskForCurrentBoundsIfNeeded() {
+        guard isAnimating else { return }
+        guard bounds.width > 0, bounds.height > 0 else { return }
+        guard let maskLayer = createTextMaskLayer() else { return }
+
+        gradientLayer.mask = maskLayer
     }
 
     private func startShimmerAnimation() {
